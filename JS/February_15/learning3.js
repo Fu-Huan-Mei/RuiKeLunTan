@@ -5,8 +5,8 @@
 // （2）String       (string)
 // （3）Boolean      (boolean)
 // （4）Undefined    (undefined)
-// （5）Null         !!!(object)!!!
-// 2、复杂数据类型:Object、Array、Function、RegExp、Date、Map、Set等
+// （5）Null         重点:!!!(object)!!!
+// 2、复杂数据类型(引用数据类型):Object、Array、Function、RegExp、Date、Map、Set等
 // 3、typeof运算符:检测数据类型；不是内置函数
 console.log(typeof 5);//number
 console.log(typeof a);//undefined
@@ -50,7 +50,7 @@ var str = "abbdjdid";
 console.log(str.charAt(0));//a
 //substring(a,b)                                  提取子串             从a开始到b结束（不包括b）的子串;省略b，则返回的子串会一直到字符串的结尾；可以自动交换两个参数a、b的位置
 console.log(str.substring(3,7));//djdi   
-//substr(a,b)                                    提取子串             得到从a开始的长度为b的子串；省略b，则返回的子串会一直到字符串的结尾；a可以是负数，表示倒数位置
+//substr(a,b)                                    提取子串(长度)             得到从a开始的长度为b的子串；省略b，则返回的子串会一直到字符串的结尾；a可以是负数，表示倒数位置
 console.log(str.substr(0,3));//abb
 console.log(str.substr(-1,3));//d
 //slice(a,b)                                     提取子串             从a开始到b结束（不包括b处）的子串;a可以是负数，表示倒数位置
@@ -71,7 +71,7 @@ console.log(3e8);//300000000  3的后边有8个0
 console.log(3e-3);//0.003    3的前边后3位
 console.log(.3e5);//30000    0.3的5次方
 //（3）不同进制的数字：
-二进制以0b开头
+// 二进制以0b开头
 console.log(0b1000);//8
 //八进制以0开头
 console.log(0712);//458
@@ -130,6 +130,16 @@ console.log(Boolean(NaN));//false
 console.log(Boolean(""));//false
 //（3）undefined和null--》布尔值：都转为false
 console.log(Boolean(null));//false
+
+//难点内容
+console.log(parseInt('3.6'+'5.1'));//第一步:拼串:'3.65.1'  第二步:转为整型:3
+console.log(Boolean('false'));//true
+console.log(0/0);//NaN
+console.log(4/0);//Infinity
+//请说出substring(),slice(),substr()方法的区别?
+console.log('abcde'.slice(3,2));//啥也没有,因为slice()方法不支持参数交换位置
+console.log('abcde'.substring(3,2));//c (3,2)会自动被JS解释器转为(2,3),表示从索引2开始,到索引3结束
+
 
 
 
