@@ -64,3 +64,25 @@ if(!isNaN(num) && num >= 100 && num <= 999){
 }else{
     console.log("你输入数字非法!");
 }
+//例2：游乐园免票计算：输入用户的年龄和星期几，弹出对话框显示出门票的价格
+//（2）if语句嵌套
+//用户输入星期几
+var week = Number(6);
+var age = Number(17);
+//星期作为前提条件
+if(week == 0 || week == 6){
+    //周末
+    if(age >= 10){
+        console.log(500);
+    }else{
+        console.log(210);
+    }
+}else{//平时
+    if(age >= 10){
+        console.log(300);
+    }else{
+        console.log(140);
+    }
+}
+//4、if-else-if多条件分支
+//举例：根据成绩输出档次 
