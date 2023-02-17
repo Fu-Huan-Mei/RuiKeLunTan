@@ -50,7 +50,7 @@ var str = "abbdjdid";
 console.log(str.charAt(0));//a
 //substring(a,b)                                  提取子串           //从a开始到b结束（不包括b）的子串;
                                                                     //省略b，则返回的子串会一直到字符串的结尾；
-                                                                    //可以自动交换两个参数a、b的位置
+                                                                    //可以自动交换两个参数a、b的位置，但表内为负数
 console.log(str.substring(3,7));//djdi   
 //substr(a,b)                                    提取子串(长度)       //得到从a开始的长度为b的子串；
                                                                      //省略b，则返回的子串会一直到字符串的结尾；
@@ -59,14 +59,14 @@ console.log(str.substr(0,3));//abb
 console.log(str.substr(-1,3));//d
 //slice(a,b)                                     提取子串             //从a开始到b结束（不包括b处）的子串;
                                                                      //省略b，则返回的子串会一直到字符串的结尾；
-                                                                     //a可以是负数，表示倒数位置
+                                                                     //a可以是负数，表示倒数位置，但不能交换2个参数位置
 console.log(str.slice(0,3));//abb
 //toUpperCase()                                将字符串变为大写
 console.log(str.toUpperCase());//ABBDJDID
 //toLowerCase()                                将字符串变为小写
 console.log(str.toLowerCase());//abbdjdid
-//indexOf()                                        检索字符串          //返回某个指定的字符在字符串中首次出现的位置；
-                                                                      //如果字符串值没有出现，则返回-1
+//indexOf()    这个爱忘记！！！！                   检索字符串         //返回某个指定的字符在字符串中首次出现的位置；
+var str = "abbdjdid";                                               //如果字符串值没有出现，则返回-1
 console.log(str.indexOf('a'));//0 
 //5、Number（数字）
 //（1）特点：不分大小、整浮、正负(重点！！)
@@ -88,7 +88,7 @@ console.log(0 / 0);//NaN
 
 /* 数据类型转换*/
 //1、使用Number()函数
-//（1）字符串--》数字：
+//（1）字符串--》数字：（全能）
 //纯数字字符串转为数字
 console.log(Number("1233"));//1233
 // 非纯数字字符串转为NaN
@@ -104,7 +104,7 @@ console.log(Number(null));//0
 console.log(Number(undefined));//NaN
 //2、使用parseInt()函数：字符串--》整数
 console.log(parseInt("123"));//123
-console.log(parseInt("3.996"));//3  （1）自动截掉第一个非数字字符后的所有字符;不四舍五入
+console.log(parseInt("3.996"));//3        （1）自动截掉第一个非数字字符后的所有字符;不四舍五入
 console.log(parseInt("3.14是圆周率"));//3  （2）所有文字都会被截掉
 console.log(parseInt("哈哈哈123"));//NaN   （3）如果字符串不是以数字开头，则转为NaN
 console.log(parseInt(-122));//-122
