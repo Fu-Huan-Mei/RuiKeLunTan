@@ -1,4 +1,4 @@
-// 第一遍理解记忆：2023-2-15 + 2-16 + 2-17
+// 第一遍理解记忆：2023-2-15 + 2-16 + 2-17  理论联系实际生活中的小例子吧！！！！
 /*数据类型 */
 // 1、基本数据类型    typeof检测结果
 // （1）Number       (number)
@@ -48,25 +48,25 @@ console.log(str.length);//13
 //charAt()                                   得到指定位置字符                   索引从0开始
 var str = "abbdjdid";
 console.log(str.charAt(0));//a
-//substring(a,b)                                  提取子串           //从a开始到b结束（不包括b）的子串;
-                                                                    //省略b，则返回的子串会一直到字符串的结尾；
-                                                                    //可以自动交换两个参数a、b的位置，但表内为负数
+//substring(a,b)                                  提取子串       //从a开始到b结束（不包括b）的子串;
+                                                                //省略b，则返回的子串会一直到字符串的结尾；
+                                                                //可以自动交换两个参数a、b的位置，但表内为负数
 console.log(str.substring(3,7));//djdi   
-//substr(a,b)                                    提取子串(长度)       //得到从a开始的长度为b的子串；
-                                                                     //省略b，则返回的子串会一直到字符串的结尾；
-                                                                     //a可以是负数，表示倒数位置
+//substr(a,b)                                    提取子串(长度)  //得到从a开始的长度为b的子串；
+                                                                //省略b，则返回的子串会一直到字符串的结尾；
+                                                                //a可以是负数，表示倒数位置
 console.log(str.substr(0,3));//abb
 console.log(str.substr(-1,3));//d
-//slice(a,b)                                     提取子串             //从a开始到b结束（不包括b处）的子串;
-                                                                     //省略b，则返回的子串会一直到字符串的结尾；
-                                                                     //a可以是负数，表示倒数位置，但不能交换2个参数位置
+//slice(a,b)                                     提取子串        //从a开始到b结束（不包括b处）的子串;
+                                                                //省略b，则返回的子串会一直到字符串的结尾；
+                                                                //a可以是负数，表示倒数位置，但不能交换2个参数位置
 console.log(str.slice(0,3));//abb
 //toUpperCase()                                将字符串变为大写
 console.log(str.toUpperCase());//ABBDJDID
 //toLowerCase()                                将字符串变为小写
 console.log(str.toLowerCase());//abbdjdid
-//indexOf()    这个爱忘记！！！！                   检索字符串         //返回某个指定的字符在字符串中首次出现的位置；
-var str = "abbdjdid";                                               //如果字符串值没有出现，则返回-1
+//indexOf()    这个爱忘记！！！！                   检索字符串     //返回某个指定的字符在字符串中首次出现的位置；
+var str = "abbdjdid";                                           //如果字符串值没有出现，则返回-1
 console.log(str.indexOf('a'));//0 
 //5、Number（数字）
 //（1）特点：不分大小、整浮、正负(重点！！)
@@ -141,8 +141,8 @@ console.log(Boolean(null));//false
 //难点内容
 console.log(parseInt('3.6'+'5.1'));//第一步:拼串:'3.65.1'  第二步:转为整型:3
 console.log(Boolean('false'));//true
-console.log(0/0);//NaN
-console.log(4/0);//Infinity
+console.log(0/0);//NaN （！！！重点记忆）
+console.log(4/0);//Infinity   （！！！重点记忆）
 //请说出substring(),slice(),substr()方法的区别?
 console.log('abcde'.slice(3,2));//啥也没有,因为slice()方法不支持参数交换位置
 console.log('abcde'.substring(3,2));//c (3,2)会自动被JS解释器转为(2,3),表示从索引2开始,到索引3结束
