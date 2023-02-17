@@ -64,10 +64,30 @@ console.log(arr);//[ 'a', 'b' ]
 var arr =  ['a','b','c','d'];
 r = arr.slice(2,4);
 console.log(arr,r);//arr= [ 'a', 'b', 'c', 'd' ]      r = [ 'c', 'd' ]  返回值为截取的子数组
-//（4）join()方法：数组--》字符串；split()方法：字符串--》数组
-//（5）join()方法：以什么字符作为连接符，如果留空的默认以逗号分隔，如同调用toString()方法
+//（4）join()方法：数组--》字符串；以什么字符作为连接符，如果留空的默认以逗号分隔，如同调用toString()方法
 var arr1 =  ['a','b','c','d'];
 r = arr1.join('&');
-console.log(arr1,r)//arr1 = [ 'a', 'b', 'c', 'd' ]    r = a&b&c&d
-//（6）split()参数表示以什么字符拆分字符串，一般不留空；
+console.log(arr1,r);//arr1 = [ 'a', 'b', 'c', 'd' ]    r = a&b&c&d
+//（5）split()方法：字符串--》数组；以什么字符拆分字符串，一般不留空
+r = 'a&b&c&d' .split('&');
+console.log(r);//r = [ 'a', 'b', 'c', 'd' ]
+//（6）concat()方法：合并连结多个数组;不改变原数组
+var arr1 = [1,2,3,4];
+var arr2 = [5,6,7,8];
+var arr = arr1.concat(arr2);
+console.log(arr);//[1,2,3,4,5,6,7,8];
+//（7）reverse()方法
+var arr = [1,2,3,4,5,6,7,8];
+var r = arr.reverse();
+console.log(arr,r);//[8,7,6,5,4,3,2,1];
+//（8）indexOf()方法：搜索数组中的元素，并返回它所在的位置，若元素不存在，则返回-1
+var arr = [1,2,3,4,5,6,7,8];
+var r = arr.indexOf(1);
+console.log(arr,r);//arr = [1,2,3,4,5,6,7,8]   r = 0
+//（9）includes()方法：判断一个数组是否包含一个指定的值，返回布尔值
+var arr = [1,2,3,4,5,6,7,8];
+var r= arr.includes(1);
+console.log(r);//true
+//（10）数组排序：sort()方法
+
 
