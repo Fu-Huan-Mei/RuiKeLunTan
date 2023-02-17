@@ -30,7 +30,7 @@ for(var i = 0;i < arr.length;i++){
 console.log(typeof null);//object
 console.log(typeof arr);//object
 console.log(Array.isArray(arr));//true
-//8、常用方法
+//8、常用方法（！！重点记忆！！爱忘记！！）
 var arr =  ['a','b','c','d'];
 //（1）头尾操作方法:                功能                                返回值
 //     push(新项)方法          在数组的尾部插入新项                返回值r为新数组的长度
@@ -46,7 +46,7 @@ console.log(arr,r);//arr = [ 'b', 'c', 'd' ]  r = a
 //   unshift()方法           在数组头部插入新项                  返回值r为新数组的长度
 r = arr.unshift(22);
 console.log(arr,r);//arr = [ 22, 'b', 'c', 'd' ]   r = 4 
-//（2）splice(参数一，参数二，其他参数)
+//（2）splice(参数一，参数二，其他参数)  （这个更爱忘记）
 //功能1：替换数组中的指定项
 var arr =  ['a','b','c','d'];
 //参数：参数一表示从数组的哪个索引位置开始替换，参数二表示替换几个元素，其他参数表示替换的新元素
@@ -64,18 +64,21 @@ console.log(arr);//[ 'a', 'b' ]
 var arr =  ['a','b','c','d'];
 r = arr.slice(2,4);
 console.log(arr,r);//arr= [ 'a', 'b', 'c', 'd' ]      r = [ 'c', 'd' ]  返回值为截取的子数组
+
 //（4）join()方法：数组--》字符串；以什么字符作为连接符，如果留空的默认以逗号分隔，如同调用toString()方法
 var arr1 =  ['a','b','c','d'];
 r = arr1.join('&');
-console.log(arr1,r);//arr1 = [ 'a', 'b', 'c', 'd' ]    r = a&b&c&d
+console.log(arr1,r);//arr1 = [ 'a', 'b', 'c', 'd' ] --> r = a&b&c&d（字符串）
 //（5）split()方法：字符串--》数组；以什么字符拆分字符串，一般不留空
 r = 'a&b&c&d' .split('&');
 console.log(r);//r = [ 'a', 'b', 'c', 'd' ]
+
 //（6）concat()方法：合并连结多个数组;不改变原数组
 var arr1 = [1,2,3,4];
 var arr2 = [5,6,7,8];
 var arr = arr1.concat(arr2);
 console.log(arr);//[1,2,3,4,5,6,7,8];
+
 //（7）reverse()方法
 var arr = [1,2,3,4,5,6,7,8];
 var r = arr.reverse();
@@ -84,10 +87,12 @@ console.log(arr,r);//[8,7,6,5,4,3,2,1];
 var arr = [1,2,3,4,5,6,7,8];
 var r = arr.indexOf(1);
 console.log(arr,r);//arr = [1,2,3,4,5,6,7,8]   r = 0
+
 //（9）includes()方法：判断一个数组是否包含一个指定的值，返回布尔值  （重点记忆！！数组去重就应用！！）
 var arr = [1,2,3,4,5,6,7,8];
 var r= arr.includes(1);
 console.log(r);//true
+
 //（10）数组排序：sort()方法
 
 
