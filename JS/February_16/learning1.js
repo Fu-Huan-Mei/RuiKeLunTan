@@ -13,7 +13,7 @@ console.log(arr3);//[ <3 empty items> ]
 //（1）数组项：数组每一项都有下标，下标从0开始(下标项 = 数组长度 - 1)
 var arr4 = ['a','b','c','d'];
 console.log(arr4[0]);
-//（2）下标越界：JS规定，访问数组中不存在的项会返回undefined，不会报错
+//（2）（重点看，爱忘记！）下标越界：JS规定，访问数组中不存在的项会返回undefined，不会报错
 //4、数组的长度：length属性表示它的长度
 console.log(arr4.length);//4
 //5、更改：数组不只是只读的，可以修改它其中任何项的值
@@ -25,25 +25,26 @@ var arr =  ['a','b','c','d'];
 for(var i = 0;i < arr.length;i++){
     console.log(arr[i]);//a b c d
 }
-//7、类型检测结果：object、Array.isArray()方法可以检测数组
+//7、类型检测结果：object、  Array.isArray()方法可以检测数组 (重点记忆）
 console.log(typeof null);//object
-console.log(typeof arr);
+console.log(typeof arr);//object
 console.log(Array.isArray(arr));//true
 //8、常用方法
 var arr =  ['a','b','c','d'];
-//（1）头尾操作方法:                功能
-//     push(新项)方法            在数组的尾部插入新项
-r = arr.push(6);//返回值r为新数组的长度
-console.log(arr,r);//arr = [ 'a', 'b', 'c', 'd', 6 ]        r = 5
-//     pop()方法             在数组尾部删除
+//（1）头尾操作方法:                功能                                返回值
+//     push(新项)方法          在数组的尾部插入新项                返回值r为新数组的长度
+r = arr.push(6);//                                         
+console.log(arr,r);//arr = [ 'a', 'b', 'c', 'd', 6 ]  r = 5
+//     pop()方法              在数组尾部删除                      返回值r为删除项
 r = arr.pop();
-console.log(arr,r);//arr= [ 'a', 'b', 'c', 'd' ]      r =  6   返回值r为返回删除对象
-//     shift()方法           在数组头部删除
+console.log(arr,r);//arr= [ 'a', 'b', 'c', 'd' ]      r =  6  
+//     shift()方法            在数组头部删除                      返回值r为删除项
+arr= [ 'a', 'b', 'c', 'd' ]          
 r = arr.shift();
-console.log(arr,r);//arr = [ 'b', 'c', 'd' ]  r = a 返回值r为数组的首项
-//   unshift()方法           在数组头部插入新项
+console.log(arr,r);//arr = [ 'b', 'c', 'd' ]  r = a 
+//   unshift()方法           在数组头部插入新项                  返回值r为新数组的长度
 r = arr.unshift(22);
-console.log(arr,r);//arr = [ 22, 'b', 'c', 'd' ]   r = 4 返回值r为新数组的长度
+console.log(arr,r);//arr = [ 22, 'b', 'c', 'd' ]   r = 4 
 //（2）splice(参数一，参数二，其他参数)
 //功能1：替换数组中的指定项
 var arr =  ['a','b','c','d'];
