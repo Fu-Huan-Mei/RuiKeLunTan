@@ -1,4 +1,4 @@
-// 第一遍理解记忆：2023-2-15
+// 第一遍理解记忆：2023-2-15 + 2-16 +
 /*数据类型 */
 // 1、基本数据类型    typeof检测结果
 // （1）Number       (number)
@@ -48,18 +48,25 @@ console.log(str.length);//13
 //charAt()                                   得到指定位置字符                   索引从0开始
 var str = "abbdjdid";
 console.log(str.charAt(0));//a
-//substring(a,b)                                  提取子串             从a开始到b结束（不包括b）的子串;省略b，则返回的子串会一直到字符串的结尾；可以自动交换两个参数a、b的位置
+//substring(a,b)                                  提取子串           //从a开始到b结束（不包括b）的子串;
+                                                                    //省略b，则返回的子串会一直到字符串的结尾；
+                                                                    //可以自动交换两个参数a、b的位置
 console.log(str.substring(3,7));//djdi   
-//substr(a,b)                                    提取子串(长度)             得到从a开始的长度为b的子串；省略b，则返回的子串会一直到字符串的结尾；a可以是负数，表示倒数位置
+//substr(a,b)                                    提取子串(长度)       //得到从a开始的长度为b的子串；
+                                                                     //省略b，则返回的子串会一直到字符串的结尾；
+                                                                     //a可以是负数，表示倒数位置
 console.log(str.substr(0,3));//abb
 console.log(str.substr(-1,3));//d
-//slice(a,b)                                     提取子串             从a开始到b结束（不包括b处）的子串;a可以是负数，表示倒数位置
+//slice(a,b)                                     提取子串             //从a开始到b结束（不包括b处）的子串;
+                                                                     //省略b，则返回的子串会一直到字符串的结尾；
+                                                                     //a可以是负数，表示倒数位置
 console.log(str.slice(0,3));//abb
 //toUpperCase()                                将字符串变为大写
 console.log(str.toUpperCase());//ABBDJDID
 //toLowerCase()                                将字符串变为小写
 console.log(str.toLowerCase());//abbdjdid
-//indexOf()                                        检索字符串           返回某个指定的字符在字符串中首次出现的位置；如果字符串值没有出现，则返回-1
+//indexOf()                                        检索字符串          //返回某个指定的字符在字符串中首次出现的位置；
+                                                                      //如果字符串值没有出现，则返回-1
 console.log(str.indexOf('a'));//0 
 //5、Number（数字）
 //（1）特点：不分大小、整浮、正负(重点！！)
