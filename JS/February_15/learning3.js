@@ -125,7 +125,7 @@ console.log(String(false));
 //（3）undefined和null--》字符串:变为“长得相同”的字符串
 console.log(String(undefined));//undefined
 console.log(String(null));//null
-//5、使用toString()方法：xxx.toString()
+//5、使用toString()方法：xxx.toString()           只有一个方法！！！
 console.log((3).toString());//3
 var num = 4;
 console.log(num.toString());//4
