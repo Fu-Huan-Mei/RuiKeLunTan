@@ -26,4 +26,12 @@ for(var n =100;n<1000;n++){
     }
 }
 
-//2、Js内置sort()方法
+//2、Js内置sort()方法:参数：函数
+var arr = [33,22,55,11];
+arr.sort(function(a,b){//a、b分别表示数组中靠前和靠后的项，如果将它们交换位置，则返回任意正数；否则返回负数
+    if(a > b){
+        return 1;
+    }else{
+        return -1;
+    }
+})
