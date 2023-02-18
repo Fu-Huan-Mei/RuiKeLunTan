@@ -35,3 +35,8 @@ arr.sort(function(a,b){//a、b分别表示数组中靠前和靠后的项，如�
         return -1;
     }
 })
+console.log(arr);//[ 11, 22, 33, 55 ]
+arr.sort(function(a,b){
+    return a- b;
+})
+console.log(arr);//[ 11, 22, 33, 55 ]
