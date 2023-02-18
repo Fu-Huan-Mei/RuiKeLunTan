@@ -1,3 +1,4 @@
+// 第一遍理解记忆：2023-2-18
 /*IIFE立即执行函数 （好好理解这里）*///难点
 //函数不能直接加()调用
 //函数必须转为"函数表达式"才能被调用
@@ -32,14 +33,14 @@ if(age < 18){
 var arr = [];
 for(var i=0;i<5;i++){
     arr.push(function(){
-        console.log(i);//i是全局变量，所有函数都共享内存中的同一个变量i
+        console.log(i);//i是全局变量，所有函数都共享内存中的同一个变量i，所以所有arr[i]都是5
     })
 }
 arr[2]();//5
 
 var arr = [];
 for(var i=0;i<5;i++){
-    (function(i){//i表示形参（局部变量i）
+    (function(i){//i表示形参（局部变量i）传递给实参
         arr.push(function(){//push()函数闭包=闭包环境i+function()函数
             console.log(i);
         });

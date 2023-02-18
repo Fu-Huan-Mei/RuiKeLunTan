@@ -1,6 +1,8 @@
-/*闭包(closure)*///难点
+// 第一遍理解记忆：2023-2-18
+/*闭包(closure)（难点）*/
 //（重点理解记忆）
-//1、概念：函数本身和该函数定义时所处的环境状态的组合；即使函数不在其定义的环境中被调用，也能访问定义时所处的环境变量
+//1、概念：  函数本身  和该函数定义时  所处的环境状态  的组合；
+//即使函数不在其定义的环境中被调用，也能访问定义时所处环境中的变量
 //创建一个函数
 function fun(){
     //定义局部变量
@@ -17,7 +19,7 @@ console.log(inn);//[Function (anonymous)]
 inn();//慕课网
 //2、观察：每次创建函数时都会创建闭包，但闭包特性往往需要将函数"换一个地方”执行，才能被观察出来
 //3、功能：
-//（1）记忆性：当闭包产生时，函数所处的环境黄台会始终保持在内存中，不会在外层函数调用后被自动清除
+//（1）记忆性：当闭包产生时，函数所处的环境变量会始终保持在内存中，不会在外层函数调用后被自动清除
 //题目：体温监测函数：checkTemp(n),可用监测体温n是否正常，函数返回布尔值，但不同小区由不同标准
 function createCheckTemp(standardTemp){//闭包=checkTemp()函数+形参standardTemp
     function checkTemp(n){
@@ -67,16 +69,16 @@ getA();//0
 // //让变量a进行+1操作
 // obj.add();
 // console.log(obj.getA());
-// //4、注意：（1）不能滥用闭包，可能会导致内存泄漏
-// //5、面试题
-// function addCount(){
-//     var count = 0;
-//     return function(){
-//         count = count + 1;
-//         console.log(count);
-//     };
-// }
-// var fun1 = addCount();
-// var fun2 = addCount();
-// fun1();
-// fun2();
+//4、注意：不能滥用闭包，可能会导致内存泄漏
+//5、面试题
+function addCount(){
+    var count = 0;
+    return function(){
+        count = count + 1;
+        console.log(count);
+    };
+}
+var fun1 = addCount();
+var fun2 = addCount();
+fun1();
+fun2();
