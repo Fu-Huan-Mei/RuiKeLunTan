@@ -1,5 +1,5 @@
 /*函数 */
-//第一遍理解记忆：2023-2-18
+//第一遍理解记忆：2023-2-18（联系生活）
 //1、简介：语句的封装，让代码方便复用；一次定义可多次调用、简化代码、可读性 （了解）
 //2、创建：
 //（1）函数声明：function 函数名 ( 形参 ){   函数体语句   }
@@ -53,34 +53,34 @@ function add (a,b){
     console.log("两个数字的和是",sum);
 }
 add(3,5);
-//9、arguments：它接收到的实参列表，是一个类数组对象
+//9、（！！重点理解记忆）arguments：它接收到的实参列表，是一个类数组对象
 //10、类数组对象：所有属性均为从0开始的自然数序列，并且有length属性，和数组类似可用[ ]书写下标访问对象的某个属性值，但不能多余数组的方法
-// function fun(){
-//     console.log(arguments);//[Arguments] { '0': 11, '1': 22, '2': 33, '3': 44, '4': 55 }
-//     console.log(arguments[0]);//11
-//     console.log(arguments[1]);//22
-// }
-// fun(11,22,33,44,55);
-//不管用户输入多少个实参，用用可以计算这些实参的和
-// function sum(){
-//     var sum = 0;
-//     for(var i=0;i < arguments.length;i++){
-//         sum = sum + arguments[i];
-//     }
-//     console.log("所有参数的和为：",sum);//165
-// }
-// sum(11,22,33,44,55);
+function fun(){
+    console.log(arguments);//[Arguments] { '0': 11, '1': 22, '2': 33, '3': 44, '4': 55 }
+    console.log(arguments[0]);//11
+    console.log(arguments[1]);//22
+}
+fun(11,22,33,44,55);
+//应用：不管用户输入多少个实参，用用可以计算这些实参的和
+function sum(){
+    var sum = 0;
+    for(var i=0;i < arguments.length;i++){
+        sum = sum + arguments[i];
+    }
+    console.log("所有参数的和为：",sum);//165
+}
+sum(11,22,33,44,55);
 //11、函数的返回值：return关键字表示“函数的返回值”；
-// function sum(a,b){
-//     return a + b;//函数返回值(体现函数的作用和函数的封装性)
-// }
-// var r = sum(3,5)//函数返回值可以被变量接收
-// console.log(r);//8
-// var r = sum(1,2) * sum(3,4);
-// console.log(r);//21
-//函数嵌套：一个函数执行语句当作另一个函数的参数
-// var r = sum(1,sum(3,4))  ;
-// console.log(r);//8
+function sum(a,b){
+    return a + b;//函数返回值(体现函数的作用和函数的封装性)
+}
+var r = sum(3,5)//函数返回值可以被变量接收
+console.log(r);//8
+var r = sum(1,2) * sum(3,4);
+console.log(r);//21
+// 函数嵌套：一个函数执行语句当作另一个函数的参数
+var r = sum(1,sum(3,4))  ;
+console.log(r);//8
 //11、遇见return会立即退出函数，将执行权交还给调用者
 function fun(){
     console.log("A");
