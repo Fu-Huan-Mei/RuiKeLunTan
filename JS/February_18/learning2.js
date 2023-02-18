@@ -11,6 +11,19 @@ function num(){
         console.log(n2);
         var n3 = Number(String(n).charAt(2));
         console.log(n3);
+        var r = factorial(n1,n2,n3);
+        console.log(r);
     }
 }
 num();
+ //求各个位数的阶乘??我不会求阶乘？？？
+ function factorial(n1,n2,n3){
+    //累乘器
+    var r = 1;
+    for(var i = 1; i <= n1;i++){
+        r = r * i;
+    }
+    return r;
+ }
+//  var r = factorial(3);
+//  console.log(r);
