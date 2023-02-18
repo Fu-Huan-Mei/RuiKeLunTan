@@ -15,7 +15,33 @@ for(var i=0;i<arr1.length;i++){
     result.push(arr1[i]);
 }
 console.log(result);//[ 1, 2, 3, 4 ]
-console.log(result == arr1);//false  因为引用类型值比较内存地址
-//3、深克隆：克隆数组的所有层，要使用递归技术
-var arr1 = [1,2,3,4[6,9,4]];
-
+//测试是否实现克隆
+console.log(result == arr1);//false  因为引用类型值比较内存地址，两个数组被完全分开了
+arr1.push(11);
+console.log(arr1,result);//arr1 = [ 1, 2, 3, 4, 11 ]    result = [ 1, 2, 3, 4 ]
+//3、深克隆：克隆数组的所有层  （没有听懂？？递归这里）
+//思路分析：如果遍历到得项是基本类型值，则直接推入结果数组；如果遍历到得项又是数组，则重复执行浅克隆的操作
+//原数组和基本数据比较
+var arr1 = [33,44,11,22,[77,88]];
+function deepClone(arr){
+    //结果数组，每一层都有一个全新的结果数组
+    var result = [];
+    //遍历数组每一项
+    for(var i=0;i<arr.length;i++){
+        //类型判断:遍历到的项是数组
+        if(Array.isArray(arr[i])){
+            //递归模式
+            deepClone(arr[i]);
+        }else{
+            //递归终止条件：遍历到得项是基本类型值，则直接推入到结果数组中
+            result.push(arr[i]);
+        }
+    }
+    //返回结果数组
+    return result;
+}
+//测试
+var arr2 = deepClone(arr1);
+console.log(arr2);//[ 33, 44, 11, 22 ]
+//是否藕断丝连
+console.log(arr1[4] == arr2[4]);//false

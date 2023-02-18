@@ -1,42 +1,16 @@
-/*算法面试题*/
-//1、喇叭花数：每一位数字的阶乘之和等于它本身即abc = a! + b! + c!,其中abc表示一个三位数，寻找所有的喇叭花
-//思路分析：找到所有的三位数，再求出每个三位数的各个位数，最后求各个位数的阶乘(factorial)  4! = 4 * 3 * 2 * 1
-//重点看！！求各个位数的阶乘??我不会求阶乘？？？
+/*递归 第一遍理解记忆：2023-2-18*/
+//1、含义：函数内部语句调用函数自身，从而发起对函数的一次迭代
+//2、要素：（1）边界条件（递归出口）：确定递归到何时终止 （2）递归模式（递归体）：大问题是如何分解为小问题的
+//题目：求阶乘：4！=3*3！
+//书写函数：函数内部会自己调用自己，从而形成递归
 function factorial(n){
-    //累乘器
-    var r = 1;
-    for(var i = 1; i <= n;i++){
-        r = r * i;
-    }
-    return r;
-}
-//寻找喇叭花数
-    //找出所有三位数
-for(var n =100;n<1000;n++){
-    //求出个各个位数:我的方法：先把三位数转为字符串，再使用charAt()方法找出每一项数字，再转为数字
-    var n1 = Number(String(n)[0]);
-    // console.log(n1);
-    var n2 = Number(String(n)[1]);
-    // console.log(n2);
-    var n3 = Number(String(n)[2]);
-    // console.log(n3);
-    //根据喇叭花数的体哦阿健，来判断
-    if(factorial(n1) + factorial(n2) + factorial(n3) == n){
-        console.log(n);//145
-    }
-}
-
-//2、Js内置sort()方法:参数：函数
-var arr = [33,22,55,11];
-arr.sort(function(a,b){//a、b分别表示数组中靠前和靠后的项，如果将它们交换位置，则返回任意正数；否则返回负数
-    if(a > b){
+    //计算n的阶乘
+    //边界条件（终止条件）：如果计算1的阶乘，则直接返回1
+    if(n == 1){
         return 1;
-    }else{
-        return -1;
     }
-})
-console.log(arr);//[ 11, 22, 33, 55 ]
-arr.sort(function(a,b){
-    return a- b;
-})
-console.log(arr);//[ 11, 22, 33, 55 ]
+    //递归模式：如果询问不是1的阶乘，则返回n*(n-1)!
+    return  n * factorial(n-1);
+}
+var r = factorial(4);
+console.log(r);//24
