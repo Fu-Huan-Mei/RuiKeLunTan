@@ -5,8 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+<!--getElementsByClassName()方法
+（1）功能：通过类名得到节点数组
+（2）注意事项：
+从E9开始兼容；
+某个节点元素也可以调用getElemntsByClassName(),从而得到其内部的某类名的元素节点-->
 </head>
 <body>
+    <div>
+        <p class="p">我是段落1</p>
+        <p class="p">我是段落2</p>
+        <p class="p">我是段落3</p>
+        <p class="p">我是段落3</p>
+    </div>
+    
+    <script>
+        //得到div
+        var div = document.getElementsByTagName("div")[0];
+        console.log(div);
+        //得到div中的p        
+        var p = div.getElementsByClassName("p")[0];
+        console.log(p);
+
+    </script>
     
 </body>
 </html>

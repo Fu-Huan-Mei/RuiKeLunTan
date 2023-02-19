@@ -13,15 +13,19 @@
     任何一个节点元素可用调用getElementsByTagName()方法，从而得到期内不得某类元素节点-->
 </head>
 <body>
-    <p>我是段落1</p>
-    <p>我是段落2</p>
-    <p>我是段落3</p>
-    <p>我是段落4</p>
+    <div id="box1">
+        <p>我是段落1</p>
+        <p>我是段落2</p>
+        <p>我是段落3</p>
+        <p>我是段落4</p>
+    </div>
+   
     <script>
-        //得到p标签的数组
-        var Ps = document.getElementsByTagName("p");
-        
-        console.log(Ps);
+        //得到box1
+        var box1 = document.getElementById("box1");
+        //得到box1中的p标签的数组
+        var Ps_in_box1 = box1.getElementsByTagName("p");
+        console.log(Ps_in_box1);
     </script>
 </body>
 </html>
