@@ -29,7 +29,7 @@ if(age < 18){
         var title = "女士";
     }   
 }
-//作用：（2）将全局变量变为局部变量
+//作用：（2）将全局变量i即实参传递给局部变量（函数中的变量）
 var arr = [];
 for(var i=0;i<5;i++){
     arr.push(function(){
