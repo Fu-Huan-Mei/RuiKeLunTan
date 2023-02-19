@@ -5,9 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!--改变元素节点的HTML属性-->
+    <!--改变元素节点的HTML属性
+    （1）标准W3C属性，如src、href等，只需要直接打点进行更改
+     box.src = "images/1.jpg";-->
 </head>
 <body>
-    
+    <img src="./1.webp" id="img">
+    <a href="http://www.baidu.com" id="link">
+        去百度
+    </a>
+    <script>
+        var img = document.getElementById("img");
+        var link = document.getElementById("link");
+        img.src = "./2.webp";
+        link.href = "http://www.123.com";
+        link.innerText = "去123";
+    </script>
 </body>
 </html>
