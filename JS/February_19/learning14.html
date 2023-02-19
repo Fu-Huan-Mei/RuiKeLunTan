@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--querySelector()
+    （1）功能：通过选择器得到元素
+    （2）注意事项：
+    唯一性：只能得到页面上的一个元素或只能得到第一个元素
+    兼容性：IE9才支持-->
+    <!--querySelectorAll()
+    （1）功能：得到元素数组
+    （2）注意事项：即使页面上只有一个符合选择器的节点，也将得到长度为1的数组-->
+</head>
+<body>
+    <div id="box1">
+        <p>我是p段落</p>
+        <p class="spec para">我是p段落</p>
+        <p>我是p段落</p>
+    </div>
+    <script>
+        // var p = document.querySelector("#box1 .spec");
+        // console.log(p);//<p class="spec para">我是p段落</p>
+        var Ps = document.querySelectorAll("#box1 p");
+        console.log(Ps[0]);//<p>我是p段落</p>
+    </script>
+</body>
+</html>
