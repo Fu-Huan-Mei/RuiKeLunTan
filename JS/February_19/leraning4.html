@@ -6,15 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>移动节点</title>
     <!--
-1、概念：如果将已经挂载到DOM树上德节点成为appendChild()或者insertBefore()德参数，该节点会被移动
+1、概念：如果将已经挂载到DOM树上德节点成为appendChild()或者insertBefore()的参数，该节点会被移动
 2、语法：
-(1)新父节点.appendChild(已经有父亲的节点);
+(1)新父节点.appendChild(已经有父亲的子节点);
 （2）新父节点.insertBefore(已经有父亲的节点，标杆子节点);
 3、结论：一个节点不能同时位于DOM树上的两个位置-->
 </head>
 <body>
+    <div id="box1">
+        <p id="para">我是段落！</p>
+    </div>
+    <div id="box2">
+        <p>我是box2的原有p标签</p>
+        <p>我是box2的原有p标签</p>
+        <p>我是box2的原有p标签</p>
+        <p>我是box2的原有p标签</p>
+    </div>
     <script>
-        
+        var box1 = document.getElementById("box1");
+        var box2 = document.getElementById("box2");
+
+        //方法一：此时para就会移动到box2节点中
+        // var para = document.getElementById("para");/*<div id="box2"><p id="para">我是段落！</p></div>*/
+        // box2.appendChild(para);
+
+        //方法二：成为原来0号节点之前的子节点（最开始的子节点）
+        var ps_inbox2 = box2.getElementsByTagName("p");
+        box2.insertBefore(para,ps_inbox2[0]);
     </script>
 </body>
 </html>

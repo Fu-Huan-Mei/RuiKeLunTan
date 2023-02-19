@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>删除节点</title>
+    <!--
+         removeChild()方法：
+        （1）功能：从DOM中删除一个子节点
+        （2）语法：父节点.removeChild(要删除的子节点)
+        （3）结论：子节点不能自杀，必须由父节点删除
+    -->
+</head>
+<body>
+    <div id="box">
+        <p>我是p1节点</p>
+        <p>我是p2节点</p>
+        <p>我是p3节点</p>
+    </div>
+    <script>
+        var box = document.getElementById("box");
+        var the_first_p = box.getElementsByTagName("p")[0];
+        box.removeChild(the_first_p);
+    </script>
+</body>
+</html>
