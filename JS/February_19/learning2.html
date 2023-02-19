@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节点</title>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+    /* 
+    1、创建：
+    （1）document.createElement()方法创建一个指定标签名的HTML元素
+    2、孤儿节点：新创建的节点是孤儿节点，即它并没有被挂载到DOM树上，无法看见它;
+    appendChild()或insertBefore()方法：将孤儿节点插入到DOM树上
+    3、appendChild():
+    （1）作用：将孤儿节点挂载到父节点内部，成为它的最后一个子节点
+    （2）语法：父节点.appendChild(孤儿节点*/
+    var div = document.createElement("div");
+    div.appendChild(div);
+    /*4、insertBefore()：
+    （1）作用：将孤儿节点挂载到父节点内部，成为它的“标杆子节点”之前的节点
+    （2）语法：父节点.insertBefore(孤儿节点，标杆节点）；*/
+    /*、改变元素节点内容：
+    （1）innerHTML ：以HTML语法设置节点中的内容
+    （2）innerText：以纯文本形式设置节点中的内容*/
+        var box = document.getElementById("box");
+        box.innerHTML = "<ul><li>牛奶</li><li>咖啡</li></ul>";
+        /*网页效果：牛奶    咖啡*/
+        box.innerText = "<ul><li>牛奶</li><li>咖啡</li></ul>";
+        /*网页效果：<ul><li>牛奶</li><li>咖啡</li></ul>*/
+    </script>
+    
+</body>
+</html>
