@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--方法二：getElementsByTagName()
+    （1）功能：通过标签名得到节点数组
+    （2）注意事项：
+    数组方便遍历，从而可以批量操控元素节点
+    即使页面上只有一个指定标签名得节点，也将得到长度为1得数组；
+    任何一个节点元素可用调用getElementsByTagName()方法，从而得到期内不得某类元素节点-->
+</head>
+<body>
+    <p>我是段落1</p>
+    <p>我是段落2</p>
+    <p>我是段落3</p>
+    <p>我是段落4</p>
+    <script>
+        //得到p标签的数组
+        var Ps = document.getElementsByTagName("p");
+        
+        console.log(Ps);
+    </script>
+</body>
+</html>
