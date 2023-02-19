@@ -7,19 +7,33 @@
     <title>Document</title>
     <!--改变元素节点的HTML属性
     （1）标准W3C属性，如src、href等，只需要直接打点进行更改
-     box.src = "images/1.jpg";-->
+     box.src = "images/1.jpg";
+    （2）非标准W3C属性，使用setAttribute("属性名"，属性值)和getAttribute("属性名"，属性值)来设置和读取-->
 </head>
 <body>
-    <img src="./1.webp" id="img">
+    <!--标准W3C-->
+    <!-- <img src="./1.webp" id="img">
     <a href="http://www.baidu.com" id="link">
         去百度
-    </a>
+    </a>-->
+
+    <!--非标准W3C-->
+    <div id="box"></div>
     <script>
-        var img = document.getElementById("img");
-        var link = document.getElementById("link");
-        img.src = "./2.webp";
-        link.href = "http://www.123.com";
-        link.innerText = "去123";
+        //标准W3C
+        // var img = document.getElementById("img");
+        // var link = document.getElementById("link");
+        // img.src = "./2.webp";
+        // link.href = "http://www.123.com";
+        // link.innerText = "去123";
+
+        //非标准
+        var box = document.getElementById("box");
+        //设置属性
+        box.setAttribute("data-n",10);
+        //读取属性
+        var n = box.getAttribute("data-n");
+        alert(n);
     </script>
 </body>
 </html>
