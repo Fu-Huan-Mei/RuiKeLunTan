@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态创建表格</title>
+    <style>
+        td{
+            width:200px;
+            height:20px;
+            border:1px black solid;
+        }
+    </style>
+</head>
+<body>
+    <table id="mytable"></table>
+    <script>
+        //动态创建出一个20行12列表格
+        //找到父节点
+        var mytable = document.getElementById("mytable");
+        //创建新节点
+        for(var i=0;i < 20;i++){//外层循环创建行
+            //创建新的tr标签
+            var tr = document.createElement("tr");//
+            for(var j=0;j<12;j++){//内层循环创建列
+                //创建新的td标签
+                var td = document.createElement("td");
+                //设置td内部文字
+                td.innerText = i + "乘" + j + "等于" + (i * j);
+                //让tr追加td标签
+                tr.appendChild(td);
+            }
+            //让mytable追加tr标签
+            mytable.appendChild(tr);
+        }
+    </script>
+</body>
+</html>

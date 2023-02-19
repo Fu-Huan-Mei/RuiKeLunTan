@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节点</title>
+   
+</head>
+<body>
+    <div id="box">
+        <p>我是原本的段落0</p>
+        <p>我是原本的段落1</p>
+        <p>我是原本的段落2</p>
+    </div>
+    <script>
+/*  1、创建：
+（1）document.createElement()方法创建一个指定标签名的HTML元素
+（2）孤儿节点：新创建的节点是孤儿节点，即它并没有被挂载到DOM树上，无法看见它;
+appendChild()或insertBefore()方法：将孤儿节点插入到DOM树上
+2、appendChild():
+（1）作用：将孤儿节点挂载到父节点内部，成为它的最后一个子节点
+（2）语法：父节点.appendChild(孤儿节点
+3、insertBefore()：
+（1）作用：将孤儿节点挂载到父节点内部，成为它的“标杆子节点”之前的节点
+（2）语法：父节点.insertBefore(新节点，标杆节点）；*/
+
+        //获取父节点
+        var box = document.getElementById("box");
+        //获取子节点p
+        var ps = box.getElementsByTagName("p");
+
+        //创建孤儿节点(新节点)
+        var p = document.createElement("p");
+        //在新节点中设置内部文字
+        p.innerText = "我是新来的段落3";
+
+        //方法一：将新节点挂在树上
+        // box.appendChild(p);//挂载父节点最后
+        //方法二：将新节点挂在树上
+        box.insertBefore(p,ps[0]);//挂载最开始位置
+    </script>
+  
+</body>
+</html>
