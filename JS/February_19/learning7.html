@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <!--
+    改变元素节点的CSS样式
+    （1）CSS属性要写成”驼峰“形式
+    box.style.backgroundColor = "red";
+   （2） CSS属性值要设置成完成形式
+    box.style.backgroundImg = "url(images/1.jpg)";
+    （3）注意写单位
+    box.style.fontSize = "32px";
+-->
+<style>
+    .box{
+        width:200px;
+        height:200px;
+        border:1px red solie;
+    }
+</style>
+</head>
+<body>
+    <div id="box" class="box"></div>
+    <script>
+        var box = document.getElementById("box");
+        box.style.backgroundColor = "yellow";/*<div id="box" class="box" style="background-color: yellow;"></div>*/ //设置背景颜色
+        box.style.backgroundImage = "url(./1.webp)";//设置背景图片
+        box.style.backgroundSize = "cover";//设置背景图片大小
+        box.style.fontSize = "100px";
+    </script>
+</body>
+</html>

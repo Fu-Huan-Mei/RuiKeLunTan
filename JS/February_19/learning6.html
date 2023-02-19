@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>克隆节点</title>
+<!--cloneNode()方法
+（1）功能：克隆节点，克隆出的节点是"孤儿节点"
+（2）语法：
+var 孤儿节点 = 老节点.cloneNode();
+var 孤儿节点 = 老节点.cloneNode(true);
+（3）参数：布尔值：表示是否采用深度克隆：true，则该节点的所有后代节点也都会被克隆；false，只克隆节点本身
+-->
+</head>
+<body>
+    <div id="box1">
+        <ul>
+            <li>牛奶</li>
+            <li>咖啡</li>
+            <li>可乐</li>
+        </ul>
+    </div>
+    <div id="box2"></div>
+    <script>
+        var box1 = document.getElementById("box1");
+        var box2 = document.getElementById("box2");
+        var ul = box1.getElementsByTagName("ul")[0];
+        //克隆节点是孤儿节点
+        var new_ul = ul.cloneNode(true);
+        //将孤儿节点挂载到页面
+        box2.appendChild(new_ul);
+    </script>
+</body>
+</html>
