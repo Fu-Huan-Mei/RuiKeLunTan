@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素节点：子节点</title>
+</head>
+<body>
+    <div id="box">
+        <p>我是段落A</p>
+        我是文本
+        <!--我是注释-->
+        <p id="para">
+            我是段落B
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+        </p>
+        <p>我是段落C</p>
+    </div>
+    <script>
+        //children()返回所有子元素
+        var box = document.getElementById("box");
+        var para = document.getElementById("para");
+        console.log(box.children);//[p, p#para, p,para: p#para]
+        console.log(para.children);//[span, span, span, p, para: p#para]
+        // function getChildren(node){
+        //     var children = [];
+        //     for(var i =0;i<node.childNodes.length;i++){
+        //         if(node.childNodes[i].nodeType == 1){
+        //             children.push(node.childNodes[i]);
+        //         }
+        //     }
+        //     return children
+        // }
+        // console.log(getChildren(box));// [p, p#para, p]
+        // console.log(getChildren(para));// [span, span, span]
+    </script>
+</body>
+</html>
