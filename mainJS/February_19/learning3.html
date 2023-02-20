@@ -14,16 +14,18 @@
         <p>我是原本的段落2</p>
     </div>
     <script>
+        // 第一遍理解记忆：2023-2-20
 /*  1、创建：
 （1）document.createElement()方法创建一个指定标签名的HTML元素
-（2）孤儿节点：新创建的节点是孤儿节点，即它并没有被挂载到DOM树上，无法看见它;
+（2）孤儿节点：新创建的节点是孤儿节点，即它并没有被挂载到DOM树上，无法看见它;（新节点）
 appendChild()或insertBefore()方法：将孤儿节点插入到DOM树上
+挂载
 2、appendChild():
 （1）作用：将孤儿节点挂载到父节点内部，成为它的最后一个子节点
-（2）语法：父节点.appendChild(孤儿节点
+（2）语法：父节点.appendChild(孤儿节点)
 3、insertBefore()：
 （1）作用：将孤儿节点挂载到父节点内部，成为它的“标杆子节点”之前的节点
-（2）语法：父节点.insertBefore(新节点，标杆节点）；*/
+（2）语法：父节点.insertBefore(新节点，标杆子节点）；*/
 
         //获取父节点
         var box = document.getElementById("box");
