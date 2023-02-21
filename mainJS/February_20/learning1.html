@@ -5,32 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>事件监听</title>
-<!--第一遍理解记忆：2023-2-20
+<!--第一遍理解记忆：2023-2-20-->
+<!--
 1、事件：用户与网页的交互动作  eg:用户点击鼠标、鼠标移动到元素上
 2、监听：随时知道这些事件发生了
-3、方法：（1）onxxx属性
+3、方法：（1）onxxx属性 （2）addEventListener()方法
 4、常见的鼠标事件监听：事件名                  事件描述
-                    onclick              鼠标单击某个对象
-                    ondblclick           鼠标双击某个对象
-                    onmousedown        某个鼠标按键在某个对象上被按下
-                    onmouseup          某个鼠标按键在某个对象上被松开
-                    onmousemove        某个鼠标按键在某个对象上被移动
-                    onmouseenter       当鼠标进入某个对象（相似事件onmouseover)
-                    onmouseleave       当鼠标离开某个对象（相似事件onmouseout
+                    onclick              鼠标 单击 某个对象
+                    ondblclick           鼠标 双击 某个对象
+                    onmousedown        某个鼠标按键在某个对象上 被按下
+                    onmouseup          某个鼠标按键在某个对象上 被松开
+                    onmousemove        某个鼠标按键在某个对象上 被移动
+                    onmouscenter       当鼠标 进入 某个对象（相似事件onmouseover)
+                    onmouseleave       当鼠标 离开 某个对象（相似事件onmouseout
 5、常见的键盘事件监听：事件名                  事件描述
-                    onkeypress       当某个键盘键被按下（系统按钮如箭头和功能键无法得到识别,即不能监听)
-                    onkeydown        当某个键盘键被按下（系统按钮可以识别，并且会先于 onkeypress发生
+                    onkeypress       当某个键盘键 被按下（系统按钮如箭头和功能键无法得到识别,即不能监听)
+                    onkeydown        当某个键盘键 被按下（系统按钮可以识别箭头和功能键，并且会先于 onkeypress发生
                     onkeyup          当某个键盘键被松开
-6、常见的键盘事件监听：事件名                  事件描述
-                    onchange               当用户改变域的内容
-                    oninput                当用户输入域的内容
-                    onfocus                当某元素获得焦点（eg：tab键、鼠标点击）
-                    onblur                 当某元素失去焦点
-                    onsubmit               当表单被提交
-                    onreset                当表单被重置
+6、常见的    事件监听：事件名                  事件描述
+                    oninput                当用户 输入 域的内容
+                    onchange               当用户 改变 域的内容
+                    onfocus                当某元素 获得焦点（聚焦）（eg：tab键、鼠标点击）
+                    onblur                 当某元素 失去焦点（失焦）
+                    onsubmit               当表单 被提交
+                    onreset                当表单 被重置
 7、常见的页面事件监听：事件名                  事件描述
-                    onload                 当页面或图像被完全加载
-                    onunload               当用户退出页面-->
+                    onload                 当页面或图像 被完全加载
+                    onunload               当用户 退出 页面
+-->
         <style>
             #box{
                 width:100px;

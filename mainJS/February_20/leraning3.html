@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件对象</title>
+    <!--第一遍理解记忆：2023-2-20-->
+    <!--1、事件对象：事件处理函数提供一个形参，它是一个对象，封装了本次事件的细节；该参数由event或e来表示  
+        eg:box.onmousemove = function(e){ 对象e就是这次事件的”事件对象“}
+        2、鼠标位置：属性          属性描述
+                  pageX      鼠标指针相对于 整张网页（浏览器左边窗口框） 的水平坐标   （原因：浏览器无水平滚动条）
+                  pageY      鼠标指针相对于 整张网页 （网页底部）的垂直坐标          （原因：浏览器有垂直滚动条）
+                  clientX    鼠标指针相对于 浏览器（浏览器左边窗口框） 的水平坐标
+                  clientY    鼠标指针相对于 浏览器（浏览器左边窗口框） 的垂直坐标
+                  offsetX    鼠标指针相对于 事件源元素（最内层子元素） 的水平坐标
+                  offsetY    鼠标指针相对于 事件源元素（最内层子元素） 的垂直坐标
+    -->
+    <style>
+        #box1{
+            width:200px;
+            height:200px;
+            background-color:chartreuse;
+            margin:100px;
+        }
+        body{
+            height:2000px;/*网页变长出现垂直滚动条*/
+        }
+        #info{
+            font-size: 30px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="info"></div>
+    <script>
+        var box1 = document.getElementById("box1");
+        var info = document.getElementById("info");
+        box1.onmousemove = function(e){
+            info.innerHTML = "offsetX/Y:" + e.offsetX + "," + e.offsetY + "<br>"
+                            + "clientX/Y" + e.clientX + "," + e.clientY + "<br>"
+                            + "pageX/Y" + e.pageX + "," + e.pageY ;
+        };
+    </script>
+</body>
+</html>
