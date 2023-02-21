@@ -5,12 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>事件对象的属性</title>
-<!-- 3、e.charCode属性：用于onkeypress事件，表示用户输入字符的"字符码"
-字符           字符码
-数字0~9        48~57
-大写字母A~Z    65~90
-小写字母a~z    97~122
-4、e.keyCpde属性：用于onkeydown和onkeyup事件，表示用户按下的按键的"键码"
+<!--第一遍理解记忆：2023-2-21 + -->
+<!--
+ 3、e.charCode属性：用于onkeypress事件，表示用户 输入 字符 的"字符码"
+字符            字符码
+数字0~9         48~57
+大写字母A~Z     65~90(25个)
+小写字母a~z     97~122(25个)
+4、e.keyCode属性：用于onkeydown和onkeyup事件，表示用户 按下 按键 的"键码"
 按键                     键码
 数字0~9          48~57（同charCode键码完全相同）
 字母不分大小a~z   65~90（同charCode键码大写字母A~Z，而keyCode不分大小写，一律为65~90）
@@ -30,18 +32,19 @@
 </head>
 <body>
     <!--老师带领做的小范例-->
-    <!-- <input type="text" id="field">
+    <input type="text" id="field">
     <h1 id="info"></h1>
     <script>
         var field = document.getElementById("field");
         var info = document.getElementById("info");
         field.onkeypress = function(e){
-            info.innerText = "你输入的字符的字符码是" + e.charCode;
+            info.innerText = "你输入的字符的字符码是" + e.charCode;//??
+      
         }
-        field.onkeypress = function(e){
-            info.innerText = "你输入的字符的字符码是" + e.keyCode;
-        }
-    </script> -->
+        // field.onkeypress = function(e){
+        //     info.innerText = "你输入的字符的字符码是" + e.charCode;
+        // }
+    </script>
 
     <!--自己做的小案例-->
     <!--制作一个特效：按方向键可用控制页面上的盒子移动-->
