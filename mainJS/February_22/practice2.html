@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js和CSS3实现动画效果</title>
+    <style>
+        #box{
+            width:100px;
+            height:100px;
+            position:absolute;
+            top:100px;
+            height:100px;
+            background-color: darkorchid;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">点我就动</button>
+    <div id="box"></div>
+    <script>
+        //获取元素
+        var btn = document.getElementById("btn");
+        var box = document.getElementById("box");
+        //事件监听
+        btn.onclick = function(){
+            //动画过渡
+            box.style.transition = "all 2s linear 0s";
+            //动画效果：改变元素的top和left值
+            box.style.left = "1000px";
+        }
+    </script>
+</body>
+</html>

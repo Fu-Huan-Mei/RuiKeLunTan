@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>定时器和延时器</title>
+    <title>定时器</title>
+    <!-- 第一遍理解记忆：2023-2-22 -->
     <!--定时器：
 1、setInterval()函数：
-（1）简介：重复调用一个函数，在每次调用之间具有固定的时间间隔
+（1）简介：重复调用一个函数，在每次调用之前具有固定的时间间隔
 （2）语法：setInterval(     function(  a,b  ){//这个函数将自动被以固定时间间隔的时间调用},时间间隔   );
-（3）参数：第一个参数是函数；第二个参数是间隔时间，以毫秒为单位，即1000ms=1s;从第三个参数开始，表示传入函数内的参数
+（3）参数：第一个参数是匿名函数；第二个参数是间隔时间，以毫秒为单位，即1000ms=1s;
+从第三个参数开始，表示传入匿名函数内的参数
 2、clearInterval()函数
 （1）简介：清除一个定时器
 （2）语法：

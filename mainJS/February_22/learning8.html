@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS和CSS3结合实现动画</title>
+    <!--CSS3:transition属性-->
+    <style>
+        #box{
+            width:100px;
+            height:100px;
+            position: absolute;
+            top:100px;
+            height:100px;
+            background-color: deeppink;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">点我就动</button>
+    <div id="box"></div>
+    <script>
+        //得到元素
+        var btn = document.getElementById("btn");
+        var box = document.getElementById("box");
+        //标识量：指示当前盒子在左边还是右边
+        var pos = 1;//1左，2右
+        //事件监听
+        btn.onclick = function(){
+            //把过度加上
+            box.style.transition = "all 2s linear 0s";
+            if(pos==1){//当前在左边
+                //瞬间移动到右边，但由于有过度，所以是动画
+                box.style.left = "1100px";
+                //把标识量改为2
+                pos = 2;
+            }else if(pos==2){
+                //瞬间移动，但由于有过度，所以是动画
+                box.style.left = "100px";
+                pos = 1;
+            }
+       
+        }
+    </script>
+</body>
+</html>
