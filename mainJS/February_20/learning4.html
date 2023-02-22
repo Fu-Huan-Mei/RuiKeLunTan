@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>事件对象的属性</title>
-<!--第一遍理解记忆：2023-2-21 + -->
-<!--
+    <!--第一遍理解记忆：2023-2-21 + 22 -->
+    <!--
  3、e.charCode属性：用于onkeypress事件，表示用户 输入 字符 的"字符码"
 字符            字符码
 数字0~9         48~57
@@ -16,55 +17,63 @@
 按键                     键码
 数字0~9          48~57（同charCode键码完全相同）
 字母不分大小a~z   65~90（同charCode键码大写字母A~Z，而keyCode不分大小写，一律为65~90）
-四个方向键        37、38、39、40
+四个方向键        37(左）、38（上）、39（右）、40（下）
 回车键            13
 空格键            32 -->
-<style>
-    #box{
-        position: absolute;
-        top:200px;
-        left:200px;
-        width:100px;
-        height:100px;
-        background-color: chartreuse;
-    }
-</style>
-</head>
-<body>
-    <!--老师带领做的小范例-->
-    <input type="text" id="field">
-    <h1 id="info"></h1>
-    <script>
-        var field = document.getElementById("field");
-        var info = document.getElementById("info");
-        field.onkeypress = function(e){
-            info.innerText = "你输入的字符的字符码是" + e.charCode;//??
-      
+    <style>
+        #box {
+            position: absolute;
+            top: 200px;
+            left: 200px;
+            width: 100px;
+            height: 100px;
+            background-color: chartreuse;
         }
-        // field.onkeypress = function(e){
-        //     info.innerText = "你输入的字符的字符码是" + e.charCode;
-        // }
-    </script>
+    </style>
 
+
+
+</head>
+
+<body>
+    <!-- 老师带领做的小范例
+    <input type="text" id="field1">
+    <h1 id="info1"></h1>
+    <input type="text" id="field2">
+    <h1 id="info2"></h1>
+    <script>
+        window.onload = function () {
+            var field1 = document.getElementById("field1");
+            var field2 = document.getElementById("field2");
+            var info1 = document.getElementById("info1");
+            var info2 = document.getElementById("info2");
+            field1.onkeypress = function (e) {
+                info1.innerText = "你输入的字符的字符码是" + e.charCode;
+            }
+            field2.onkeydown = function (e) {
+                info2.innerText = "你输入键盘得键码是" + e.keyCode;
+            }
+        }
+    </script> -->
     <!--自己做的小案例-->
     <!--制作一个特效：按方向键可用控制页面上的盒子移动 ??-->
     <div id="box"></div>
     <script>
         var box= document.getElementById("box");
-       //全局变量t和l分别表示盒子的top属性值和left属性值
+    //全局变量t和l分别表示盒子的top属性值和left属性值
        var t = 200;
        var l = 200;
-       //监听document对象的键盘按下事件监听，当用户在整个网页上按下按键时
+    //监听document对象的键盘按下事件监听，当用户在整个网页上按下按键时做的事件
         document.onkeydown = function(e){//e表示事件对象box
             switch(e.keyCode){
                 case 37:
-                    l = l - 3;//上移
+                    l = l - 3;//左移
                     break;
                 case 38:
-                    t = t - 3;//右移
+                    t = t - 3;//上移
                     break;
                 case 39:
-                    l = l + 3;//左移
+                    l = l + 3;//右移
                     break;
                 case 40:
                     t = t + 3;//下移
@@ -73,7 +82,8 @@
             //更改样式
             box.style.left = l + "px";
             box.style.top = t + "px";
-        };
+        }; 
     </script>
 </body>
+
 </html>

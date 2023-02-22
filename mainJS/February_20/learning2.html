@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>事件传播</title>
-    <!--第一遍理解记忆：2023-2-20-->
+    <!--第一遍理解记忆：2023-2-20 +22-->
     <!-- 
 1、事件传播：
 （1）捕获阶段(capturing phase)：从外传到内
@@ -15,7 +15,7 @@
 DOM0级事件监听：只能监听冒泡阶段      元素.onclick = function(){ }
 DOM2级事件监听：自由决定监听哪个阶段  元素.addEventListener("click",function(){  事件处理函数 },true)
 注意： true监听捕获阶段；false监听冒泡阶段 
-3、注意：（重点记忆特殊情况，爱忘记）
+3、（重点记忆特殊情况，爱忘记）注意：
 （1）最内部元素不再区分捕获和冒泡阶段，先写先执行（会先执行写在前面的监听，再执行后写的监听）
 （2）如果给元素设置 相同的 2个或多个 同名事件 ，DOM0级后写后执行（则DOM0级写法后面写的会覆盖前写的）；DOM2级按顺序执行-->
     <style>
