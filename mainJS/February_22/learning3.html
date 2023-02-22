@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件委托</title>
+     <!--
+1、概念：利用事件冒泡（从内向外）机制，将后代元素事件委托给祖先元素
+2、属性                                               属性描述
+e.target                               触发此事件的最早元素，即事件源元素（用户真正点击的那个元素）
+e.currentTarget                              事件处理程序附加到的元素
+3使用场景：
+（1）当有大量类似元素需要批量添加事件监听时，使用事件委托可以减少内存开销
+（2）当有动态元素节点上树时，使用事件委托可以让新上树的元素具有事件监听
+4、注意事项:
+（1）不能委托不冒泡的事件给祖先元素（因为onmouseenter不冒泡和onmouseover冒泡，但都表示鼠标进入）
+（2）最内层元素不能再有额外的内层元素-->
+</head>
+<body>
+    <button id="btn">创建新列表项</button>    
+    <ul id="list">
+        <li>列表项</li>
+        <li>列表项</li>
+        <li>列表项</li>
+    </ul>
+    <script>
+        var btn = document.getElementById("btn");
+        var list = document.getElementById("list");
+        //相当于你事件处理函数附加给那个DOM节点，就是哪个DOM节点自己触发的事件，没有冒泡过程
+        // list.onmouseenter = function(e){
+        //     e.target.style.color = "red";
+        // }
+        list.on
+        list.onclick = function(e){
+        //（重点）e.target用户真正点击的那个元素   e.currentTarget相当于this即附加的到的元素list
+            e.target.style.color = "red";
+        };
+        btn.onclick = function(){
+            //创建新的li元素
+            var li = document.createElement("li");
+            //写内容
+            li.innerText = "我是新来的";
+            //挂在上树
+            list.appendChild(li);
+        }
+    </script>
+
+<button id="btn">创建新列表项</button>    
+<ul id="list">
+    <!--注意：（2）最内层元素不能再有额外的内层元素-->>
+    <li><span>哈哈哈哈</span>列表项</li>
+    <li>列表项</li>
+    <li>列表项</li>
+</ul>
+<script>
+    var btn = document.getElementById("btn");
+    var list = document.getElementById("list");
+    //相当于你事件处理函数附加给那个DOM节点，就是哪个DOM节点自己触发的事件，没有冒泡过程
+    // list.onmouseenter = function(e){
+    //     e.target.style.color = "red";
+    // }
+    list.on
+    list.onclick = function(e){
+    //（重点）e.target用户真正点击的那个元素   e.currentTarget相当于this即附加的到的元素list
+        e.target.style.color = "red";
+    };
+    btn.onclick = function(){
+        //创建新的li元素
+        var li = document.createElement("li");
+        //写内容
+        li.innerText = "我是新来的";
+        //挂在上树
+        list.appendChild(li);
+    }
+</script>
+</body>
+</html>

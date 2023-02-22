@@ -38,7 +38,7 @@ appendChild()或insertBefore()方法：将孤儿节点插入到DOM树上
         p.innerText = "我是新来的段落3";
 
         //方法一：将新节点挂在树上
-        // box.appendChild(p);//挂载父节点最后
+        box.appendChild(p);//挂载父节点最后
         //方法二：将新节点挂在树上
         box.insertBefore(p,ps[0]);//挂载最开始位置
     </script>
