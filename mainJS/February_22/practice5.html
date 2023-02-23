@@ -13,7 +13,7 @@
         }
 
         .box {
-            width: 1100px;
+            width: 1000px;
             height: 200px;
             border: 1px solid #000;
             margin: 50px auto;
@@ -22,7 +22,7 @@
 
         .box ul {
             /*width设置大一点儿，li才会浮动*/
-            width: 3000px;
+            width: 5000px;
             list-style: none;
             position: absolute;
         }
@@ -47,26 +47,30 @@
             <li><img src="../information/img/img3.jpg"></li>
             <li><img src="../information/img/img4.jpg"></li>
             <li><img src="../information/img/img5.jpg"></li>
+            <li><img src="../information/img/img6.jpg"></li>
+            
         </ul>
     </div>
     <script>
         var box = document.getElementById("box");
         var list = document.getElementById("list");
-        //复制多一遍所有的li(克隆一遍）)？？
-        // list.innerHTML += list.innerHTML;
+        //复制多一遍所有的li(克隆一遍）) ？？
+        list.innerHTML += list.innerHTML;
         //全局变量，表示当前list的left值
         var left = 0;
-        //定时器
+        //全局变量,定时器
         var timer;
         //动画封装为函数
         move();
         function move() {
+            //设置定时器时，先关定时器；防止出现动画累计，动画播放逐渐加快的现象
+            clearTimeout(timer);
             timer = setInterval(function () {
-            left -= 4;
-            //验收
-            if (left <= -1100) {
-                    left = 0;
-            }
+                left -= 4;
+                //验收(难点！！)
+                if (left <= -1040) {//1040=5张图片*图片宽度(200px) + 外边距40px（10px*4)
+                    left = 0;//动画从头开始
+                }
                 list.style.left = left + "px";
             }, 20)
         }
@@ -76,7 +80,10 @@
             clearTimeout(timer);
         }
         //鼠标离开，继续定时器
-        move();
+        box.onmouseleave = function(){
+            move();
+        }
+        
     </script>
 </body>
 

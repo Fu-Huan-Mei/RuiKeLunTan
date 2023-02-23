@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小案例</title>
+    <title>批量监听事件</title>
     <style>
     </style>
 </head>
@@ -12,7 +12,7 @@
 <!--小案例：批量监听事件：页面上有一个无序列表<ul>，它内部共有20个<li>元素，请批量给它们添加点击事件监听，实现效果：
     点击哪个<li>元素，哪个<li>元素就变红
     问题：内存消耗较大-->
-    <!-- <ul id="list">
+    <ul id="list">
         <li>列表项</li>
         <li>列表项</li>
         <li>列表项</li>
@@ -47,31 +47,8 @@
                 this.style.color = "red";//（重点）
             }
         }
-    </script>-->
-
-    <!-- 
-    小案例：新增元素动态绑定事件
-    问题：新增元素不能自动获得事件监听、耗内存 -->
-    <button id="btn">增加li按钮,该按钮也变红</button>
-    <ul id="list"></ul>
-    <script> 
-// 题目：页面上有一个无序列表<ul>，它内部没有<li>元素，请制作一个按钮，点击这个按钮就能增加一个<li>元素；
-// 并且要求每个增加的<li>元素也要有点击事件监听，实现效果是：点击哪个<li>元素，哪个<li>元素就变红
-        var list = document.getElementById("list");
-        var btn = document.getElementById("btn");
-        //按钮点击事件
-        btn.onclick = function(){
-            //创建一个新的li列表项
-            var li = document.createElement("li");
-            //往列表项li里添加内容
-            li.innerText = "列表项";
-            //挂载到树上
-            list.appendChild(li);
-            //给新创建的li节点添加click事件监听
-            li.onclick = function(){
-                this.style.color = "red";
-            };
-        };
     </script>
+
+   
 </body>
 </html>

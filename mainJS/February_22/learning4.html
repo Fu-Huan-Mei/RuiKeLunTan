@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>延时器</title>
-    <!--第一遍理解记忆：2023-2-22
+    <!--第一遍理解记忆：2023-2-22 +23
 1、setTimeout()函数
-（1）简介：可以设置延时器，当指定时间到了后，会执行函数一次，不再重复执行
+（1）简介：可以设置延时器，当指定时间到了后，会执行一次函数，"不再重复"执行
 （2）语法：setTimeout(function(){  //该函数会在2秒后执行   },2000);   
 2、clearTimeout()函数
 （1）简介：清除延时器得影响-->
 </head>
 
 <body>
-    <button id-="btn01">2s后弹出你好</button>
-    <button id-="btn02">取消弹出</button>
+    <button id="btn01">2s后弹出你好</button>
+    <button id="btn02">取消弹出</button>
     <script>
         window.onload = function () {
             var btn01 = document.getElementById("btn01");
@@ -25,7 +25,7 @@
             btn01.onclick = function () {
                 timer = setTimeout(function () {
                     alert("你好!");
-                }, 2000);
+                }, 1000);
             }
             btn02.onclick = function () {
                 clearTimeout(timer);

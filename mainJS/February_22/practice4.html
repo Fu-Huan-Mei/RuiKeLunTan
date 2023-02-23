@@ -21,14 +21,14 @@
     <button id="btn">点我就动</button>
     <div id="box"></div>
     <script>
-        //得到元素
+        //1、得到元素
         var btn = document.getElementById("btn");
         var box = document.getElementById("box");
-        //标识量：指示当前盒子在左边还是右边
+        //4、标识量：指示当前盒子在左边还是右边：为了确定盒子的运动方向
         var pos = 1;//1左，2右
-        //事件监听
+        //2、事件监听
         btn.onclick = function(){
-            //把过度加上
+            //3、把过度加上
             box.style.transition = "all 2s linear 0s";
             if(pos==1){//当前在左边
                 //瞬间移动到右边，但由于有过度，所以是动画

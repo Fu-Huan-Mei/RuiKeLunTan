@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>异步语句</title>
+    <!-- 第一遍理解记忆：2023-2-22 +23-->
+    <!--1、异步：不会阻塞CPU继续执行其他语句，当异步完成时，会执行"回调函数(callback)"-->
+</head>
+<body>
+    <script>
+
+          //第二执行：异步语句不会阻塞程序得正常执行
+         setTimeout(function(){
+            console.log("A");
+         },2000);
+
+       //第一执行：程序正常执行
+         console.log("B");
+    </script>
+   
+</body>
+</html>

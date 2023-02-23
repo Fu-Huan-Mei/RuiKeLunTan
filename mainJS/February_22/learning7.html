@@ -4,44 +4,70 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>使用定时器实现动画</title>
-    <style>
+    <title>函数节流</title>
+     <!-- 第一遍理解记忆：2023-2-22 ??-->
+    <!--
+1、节流：连续触发事件但是在 n 秒中只执行一次函数
+2、概念：每隔单位时间，只执行一次（一个函数执行一次后，只有大于设定地执行周期后才允许执行第二次；借助setTimeout()延时器）
+
+3、公式：<script>
+        var lock = true;//开锁
+        function /*需要节流的函数()*/{
+            if (!lock) return;//如果锁是关闭状态，则不执行
+            //执行函数核心语句
+            lock = false;//关锁
+            setTimeout(function(){//指定毫秒数后将锁打开
+                lock = true;
+            },2000);
+        }
+    </script>
+     -->
+     <style>
         #box{
-            position: absolute;
-            top:100px;
-            left:100px;
             width:100px;
             height:100px;
-            background-color: blueviolet;
+            position: absolute;
+            top:100px;
+            height:100px;
+            background-color: deeppink;
         }
-    </style>
-     <!-- 第一遍理解记忆：2023-2-22 -->
-    <!--
-    1、缺点：
-（1）不方便根据动画总时间计算步长
-（2）运动方向设置正负
-（3）多运动叠加较为困难-->
+     </style>
 </head>
 <body>
-    <button id="btn">开始运动</button>
+    <button id="btn">点我就动</button>
     <div id="box"></div>
     <script>
-        var box = document.getElementById("box");
+        //得到元素
         var btn = document.getElementById("btn");
-        //全局变量
-        var left = 100;
-        var timer;
-        //按钮监听
-        btn.onclick = function(){
-            timer = setInterval(function(){
-                left = left + 10;
-                if(left >= 1000){
-                    clearTimeout(timer);
-                }
-                box.style.left = left + "px";
-            },10);
-        };
-    </script>
-    
+        var box = document.getElementById("box");
+        //标识量：指示当前盒子在左边还是右边
+        var pos = 1;//1左，2右
+    //开锁
+        var lock = true;
+         //事件监听
+        btn.onclick = function(){//节流函数
+        //先检查lock是否关闭
+            if (!lock) return;
+        //函数核心语句
+            //把过度加上
+            box.style.transition = "all 2s linear 0s";
+            if(pos == 1){//当前在左边
+                //瞬间移动到右边，但由于有过度，所以是动画
+                box.style.left = "1000px";
+                //把标识量改为2
+                pos = 2;
+            }else if(pos == 2){
+                //瞬间移动，但由于有过度，所以是动画
+                box.style.left = "100px";
+                pos = 1;
+            }
+        //关锁
+            lock = false;
+        //指定时间后将所锁进行打开
+            setTimeout(function(){
+                lock = true;
+            },2000);
+        }
+   </script>
 </body>
 </html>
