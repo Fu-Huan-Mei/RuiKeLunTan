@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>阻止事件继续传播</title>
+    <!--理解记忆：2023-2-23 + -->
     <!--e.stopPropagation()方法：阻止事件继续传播-->
     <style>
         #box{
@@ -66,7 +67,7 @@
         }
         //点击弹出层内部不能关闭弹出层，所以应该阻止事件继续传播
         model.onclick = function(e){
-            //阻止盒子事件继续到document上
+            //阻止弹出层事件继续到document上
             e.stopPropagation();
         }
     </script>

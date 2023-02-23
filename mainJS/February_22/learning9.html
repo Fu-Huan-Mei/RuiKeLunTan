@@ -7,13 +7,13 @@
     <title>函数节流</title>
      <!-- 第一遍理解记忆：2023-2-22 -->
     <!--
-    1、概念：一个函数执行一次后，只有大于设定得执行周期后才允许执行第二次；借助setTimeout()延时器
+    1、概念：一个函数执行一次后，只有大于设定地执行周期后才允许执行第二次；借助setTimeout()延时器
     2、公式-->
      <!-- <script>
         var lock = true;//开锁
         function /*需要节流的函数()*/{
             if (!lock) return;//如果锁是关闭状态，则不执行
-            //函数核心语句
+            //执行函数核心语句
             lock = false;//关锁
             setTimeout(function(){//指定毫秒数后将锁打开
                 lock = true;
