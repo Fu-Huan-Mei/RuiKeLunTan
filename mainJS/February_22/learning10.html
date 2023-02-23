@@ -1,23 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>无缝连续滚动特效</title>
     <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
 
+        .box {
+            width: 1100px;
+            height: 200px;
+            border: 1px solid #000;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+
+        .box ul {
+            /*width设置大一点儿，li才会浮动*/
+            width: 3000px;
+            list-style: none;
+            position: absolute;
+        }
+
+        .box ul li {
+            float: left;
+            margin-right: 10px;
+        }
+
+        .box ul li img {
+            width: 200px;
+            height: 200px;
+        }
     </style>
 </head>
+
 <body>
-    <div id="box">
-        <ul>
+    <div id="box" class="box">
+        <ul id="list">
             <li><img src="../information/img/img1.jpg"></li>
             <li><img src="../information/img/img2.jpg"></li>
             <li><img src="../information/img/img3.jpg"></li>
             <li><img src="../information/img/img4.jpg"></li>
+            <li><img src="../information/img/img5.jpg"></li>
         </ul>
     </div>
-    
+    <script>
+        var box = document.getElementById("box");
+        var list = document.getElementById("list");
+        //复制多一遍所有的li(克隆一遍）)？？
+        // list.innerHTML += list.innerHTML;
+        //全局变量，表示当前list的left值
+        var left = 0;
+        //定时器
+        var timer;
+        //动画封装为函数
+        move();
+        function move() {
+            timer = setInterval(function () {
+            left -= 4;
+            //验收
+            if (left <= -1100) {
+                    left = 0;
+            }
+                list.style.left = left + "px";
+            }, 20)
+        }
+
+        //鼠标进入，停止定时器
+        box.onmouseenter = function () {
+            clearTimeout(timer);
+        }
+        //鼠标离开，继续定时器
+        move();
+    </script>
 </body>
+
 </html>
