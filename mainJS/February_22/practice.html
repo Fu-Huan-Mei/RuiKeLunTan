@@ -4,43 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>自己做的案例</title>
+    <title></title>
     <style>
-        #box{
-            width:400px;
-            height:140px;
-            position: absolute;
-            top:50%;
-            left: 50%;
-            margin-top:-70px;
-            margin-left:-200px;
-            display: none;
-            background-color: deeppink;
-        }
+        
     </style>
 </head>
 <body>
-    <!--小案例：制作弹出层：点击按钮显示弹出层，点击网页任意地方弹出层关闭-->
-    <button id="btn">点我一下</button>
-    <div id="box"></div>
-    <script>
-        var btn = document.getElementById("btn");
-        var box = document.getElementById("box");
-        btn.onclick = function(e){
-           //如果在这里阻止事件传播即阻止事件传播到网页的其他地方，也可以阻止网页任意关闭事件传播进来
-            e.stopPropagation();
-             //显示弹出层记讲box得display属性设置为block
-            box.style.display = "block";
-        }
-        document.onclick = function(){
-           //如果在这里阻止事件传播则会导致无法关闭弹弹出层
-           //该事件会传播给btn也会导致点击btn时，弹出层也关闭
-            box.style.display = "none";
-        }
-        box.onclick = function(e){
-            //阻止点击网页任意部分可以关闭弹出层传进来和点击按钮开启弹出层事件（一举两得）
-            e.stopPropagation();
-        }
-    </script>
+    
 </body>
 </html>

@@ -14,7 +14,7 @@
 
         .box {
             width: 1000px;
-            height: 200px;
+            height: 130px;
             border: 1px solid #000;
             margin: 50px auto;
             overflow: hidden;
@@ -22,14 +22,16 @@
 
         .box ul {
             /*width设置大一点儿，li才会浮动*/
-            width: 5000px;
+            width: 9000px;
             list-style: none;
-            position: absolute;
+            position: relative;
         }
 
         .box ul li {
             float: left;
             margin-right: 10px;
+            width: 200px;
+            height: 200px;
         }
 
         .box ul li img {
@@ -68,7 +70,7 @@
             timer = setInterval(function () {
                 left -= 4;
                 //验收(难点！！)
-                if (left <= -1040) {//1040=5张图片*图片宽度(200px) + 外边距40px（10px*4)
+                if (left <= -210 * 5) {//1040=5张图片*图片宽度(200px) + 外边距40px（10px*4)
                     left = 0;//动画从头开始
                 }
                 list.style.left = left + "px";
