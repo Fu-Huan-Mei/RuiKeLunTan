@@ -4,76 +4,62 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>事件委托</title>
-     <!--第一遍理解记忆：2023-2-22
-1、概念：利用事件冒泡（从内向外）机制，将后代元素事件委托给祖先元素
-2、属性                                               属性描述
-e.target                               触发此事件的最早元素，即事件源元素（用户真正点击的那个元素）
-e.currentTarget                              事件处理程序附加到的元素
-eg: list.onclick = function(e){  }事件处理程序附加到的元素即list
-3使用场景：
-（1）当有大量类似元素需要批量添加事件监听时，使用事件委托可以减少内存开销:批量添加事件监听
-（2）当有动态元素节点上树时，使用事件委托可以让新上树的元素具有事件监听:新增元素动态绑定事件
-4、注意事项:
-（1）不能委托不冒泡的事件给祖先元素（因为onmouseenter不冒泡和onmouseover冒泡，但都表示鼠标进入）
-（2）最内层元素不能再有额外的内层元素-->
+    <title>定时器</title>
+    <!-- 第一遍理解记忆：2023-2-22 +23-->
+    <!--定时器：
+1、setInterval()函数：
+（1）简介：重复调用一个函数，在每次调用之前具有固定的时间间隔
+（2）语法：setInterval(     function(  a,b  ){//这个函数将自动被以固定时间间隔的时间调用},时间间隔   );
+（3）参数：第一个参数是匿名函数；第二个参数是间隔时间，以毫秒为单位，即1000ms=1s;
+从第三个参数开始，表示传入匿名函数内的参数
+（4）具名函数也可以传入setInterval()函数
+2、clearInterval()函数
+（1）简介：清除一个定时器
+（2）语法：
+    -->
 </head>
-<body>
-    <button id="btn">创建新列表项</button>    
-    <ul id="list">
-        <li>列表项</li>
-        <li>列表项</li>
-        <li>列表项</li>
-    </ul>
-    <script>
-        var btn = document.getElementById("btn");
-        var list = document.getElementById("list");
-        //相当于你事件处理函数附加给那个DOM节点，就是哪个DOM节点自己触发的事件，没有冒泡过程
-        // list.onmouseenter = function(e){
-        //     e.target.style.color = "red";
-        // }
-        list.on
-        list.onclick = function(e){
-        //（重点）e.target用户真正点击的那个元素   e.currentTarget相当于this即附加的到的元素list
-            e.target.style.color = "red";
-        };
-        btn.onclick = function(){
-            //创建新的li元素
-            var li = document.createElement("li");
-            //写内容
-            li.innerText = "我是新来的";
-            //挂在上树
-            list.appendChild(li);
-        }
-    </script>
-
-<button id="btn">创建新列表项</button>    
-<ul id="list">
-    <!--注意：（2）最内层元素不能再有额外的内层元素-->>
-    <li><span>哈哈哈哈</span>列表项</li>
-    <li>列表项</li>
-    <li>列表项</li>
-</ul>
 <script>
-    var btn = document.getElementById("btn");
-    var list = document.getElementById("list");
-    //相当于你事件处理函数附加给那个DOM节点，就是哪个DOM节点自己触发的事件，没有冒泡过程
-    // list.onmouseenter = function(e){
-    //     e.target.style.color = "red";
+    
+    // setInterval(function(a,b){
+
+    // },1000,1,2)
+    // //点击按钮时，清除定时器，要传入定时器变量
+    // var a= 0;
+    // function fun(){
+    //     console.log(a++);
     // }
-    list.on
-    list.onclick = function(e){
-    //（重点）e.target用户真正点击的那个元素   e.currentTarget相当于this即附加的到的元素list
-        e.target.style.color = "red";
-    };
-    btn.onclick = function(){
-        //创建新的li元素
-        var li = document.createElement("li");
-        //写内容
-        li.innerText = "我是新来的";
-        //挂在上树
-        list.appendChild(li);
-    }
+    // //（4）具名函数也可以传入setInterval
+    // setInterval(fun,1000);
+
+    
 </script>
+<body>
+    <h1 id="info"></h1>
+    <button id="btn01">开始</button>
+    <button id="btn02">暂停</button>
+    <script>
+        var info = document.getElementById("info");
+        var btn01 = document.getElementById("btn01");
+        var btn02 = document.getElementById("btn02");
+        var a = 0;
+        //设置全局变量
+        var timer = null;
+        //设置定时器，并用timer接收定时器
+        btn01.onclick = function(){
+            //问题：定时器叠加：多次点击按钮时数字会加快速度变化
+            //方式：重点理解：为了防止定时器叠加影响，我们应该在设置定时器之前先去清除定时器
+            clearInterval(timer);//如果该函数中纯如undefined，JS也不会报错
+            //更改全局变量timer的值为一个定时器实体
+            timer = setInterval(() => {
+            info.innerText = ++a;
+            },1000);
+        };
+        btn02.onclick = function(){
+            //重点理解：清除定时器影响，注意将timer函数作为参数传进去
+            clearInterval(timer);
+        }
+       
+      
+    </script>
 </body>
 </html>

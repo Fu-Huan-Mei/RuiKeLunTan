@@ -1,64 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>定时器</title>
-    <!-- 第一遍理解记忆：2023-2-22 -->
-    <!--定时器：
-1、setInterval()函数：
-（1）简介：重复调用一个函数，在每次调用之前具有固定的时间间隔
-（2）语法：setInterval(     function(  a,b  ){//这个函数将自动被以固定时间间隔的时间调用},时间间隔   );
-（3）参数：第一个参数是匿名函数；第二个参数是间隔时间，以毫秒为单位，即1000ms=1s;
-从第三个参数开始，表示传入匿名函数内的参数
-2、clearInterval()函数
-（1）简介：清除一个定时器
-（2）语法：
-    -->
+    <title>延时器</title>
+    <!--第一遍理解记忆：2023-2-22
+1、setTimeout()函数
+（1）简介：可以设置延时器，当指定时间到了后，会执行函数一次，不再重复执行
+（2）语法：setTimeout(function(){  //该函数会在2秒后执行   },2000);   
+2、clearTimeout()函数
+（1）简介：清除延时器得影响-->
 </head>
-<script>
-    
-    // setInterval(function(a,b){
 
-    // },1000,1,2)
-    // //点击按钮时，清除定时器，要传入定时器变量
-    // var a= 0;
-    // function fun(){
-    //     console.log(a++);
-    // }
-    // //（4）具名函数也可以传入setInterval
-    // setInterval(fun,1000);
-
-    
-</script>
 <body>
-    <h1 id="info"></h1>
-    <button id="btn01">开始</button>
-    <button id="btn02">暂停</button>
+    <button id-="btn01">2s后弹出你好</button>
+    <button id-="btn02">取消弹出</button>
     <script>
-        var info = document.getElementById("info");
-        var btn01 = document.getElementById("btn01");
-        var btn02 = document.getElementById("btn02");
-        var a = 0;
-        //设置全局变量
-        var timer = null;
-        //设置定时器，并用timer接收定时器
-        btn01.onclick = function(){
-            //定时器叠加：多次点击按钮时数字会加快速度变化
-            //重点理解：为了防止定时器叠加影响，我们应该在设置定时器之前先去清除定时器
-            clearInterval(timer);//如果该函数中纯如undefined，JS也不会报错
-            //更改全局变量timer的值为一个定时器实体
-            timer = setInterval(() => {
-            info.innerText = ++a;
-            },1000);
-        };
-        btn02.onclick = function(){
-            //重点理解：清除定时器影响，注意将timer函数作为参数传进去
-            clearInterval(timer);
+        window.onload = function () {
+            var btn01 = document.getElementById("btn01");
+            var btn02 = document.getElementById("btn02");
+            var timer;
+            btn01.onclick = function () {
+                timer = setTimeout(function () {
+                    alert("你好!");
+                }, 2000);
+            }
+            btn02.onclick = function () {
+                clearTimeout(timer);
+            }
         }
-       
-      
+
+
     </script>
 </body>
+
 </html>
