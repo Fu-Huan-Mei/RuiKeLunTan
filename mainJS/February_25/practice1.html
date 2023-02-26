@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无缝连续滚动特效原理（老师讲的）</title>
+    <link rel="stylesheet" href="../css.style/reset.css">
+    <!--问题：图片的无缝连续滚动特效为什么把偏移量设给外部容器而不是每张图片？？-->
+    <style>
+        /*div是最外层的包装： 控制滚动区域显示的具体位置 */
+        .box{
+            width:1260px;
+            height:200px;
+            border:1px solid #000;
+            margin:100px auto;
+            /*隐藏溢出内容*/
+            overflow: hidden;
+        }
+       /*ul包装那些需要滚动的图片*/
+        .box ul{
+             /*！！重点：宽度足够大，才会让其子元素li浮动起来*/
+            width:5000px;
+            /*!!重点：为了设置ul的偏移量，实现图片滚动*/
+            position: relative;
+        }
+        .box li{
+            float:left;
+            margin-right:10px;
+        }
+        li img{
+            width:200px;
+            height:200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box">
+        <ul id="list">
+            <li><img src="../information/img/img1.jpg"></li>
+            <li><img src="../information/img/img2.jpg"></li>
+            <li><img src="../information/img/img3.jpg"></li>
+            <li><img src="../information/img/img4.jpg"></li>
+            <li><img src="../information/img/img5.jpg"></li>
+            <li><img src="../information/img/img6.jpg"></li>
+        </ul>
+    </div>
+    <script>
+        //获取盒子
+        var box = document.getElementById("box");
+        var list = document.getElementById("list");
+//！！！重点:无缝连续滚动的实现原理:在现有显示图片的基础上克隆一份，并且拼接在显示图片的后面;
+//为了满足图片滚动起来有循环
+        list.innerHTML += list.innerHTML;
+        //！！！重点：设置全局变量表示当前list的left值
+        var left=0;
+        //定时器：全局变量
+        var timer;
+        run();
+        function run(){
+            //！！重点：设表先关，防止动画积累的问题：即用户多次点击后图标加载速度过快
+            clearTimeout(timer);
+           
+            timer = setInterval(function(){
+                left -= 20;
+            /*！！重点：改变偏移量就可是图片移动*/
+                if(left<=-210 * 6){
+                    left = 0;
+                }
+                list.style.left = left + "px";
+            },100);
+        };
+        //鼠标进入，停止定时器
+        box.onmouseenter = function(){
+            clearTimeout(timer);
+        }
+        //鼠标离开继续定时器
+        box.onmouseleave = function(){
+            run();
+        }
+    </script>
+</body>
+</html>

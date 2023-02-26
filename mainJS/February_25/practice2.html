@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无缝连续滚动特效原理（我自己写的）</title>
+    <link rel="stylesheet" href="../css.style/reset.css">
+    <style>
+        .outer {
+            width: 1260px;
+            height: 200px;
+            border: 1px solid black;
+            margin: 100px auto;
+            /*隐藏溢出内容*/
+            overflow: hidden;
+        }
+
+        .list {
+            /*目的：实现连续滚动的本质：改变图片容器的偏移量*/
+            position: relative;
+            /*目的：实现图片的浮动*/
+            width: 5000px;
+
+        }
+
+        .list li {
+            float: left;
+            margin-right: 10px;
+        }
+
+        .list img {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer" id="outer">
+        <ul id="list" class="list">
+            <li> <img src="../information/img/img1.jpg"></li>
+            <li> <img src="../information/img/img2.jpg"></li>
+            <li> <img src="../information/img/img3.jpg"></li>
+            <li> <img src="../information/img/img4.jpg"></li>
+            <li> <img src="../information/img/img5.jpg"></li>
+            <li> <img src="../information/img/img6.jpg"></li>
+        </ul>
+    </div>
+    <script>
+        //获取外部容器：为了鼠标移暂停和鼠标移入继续滚动的事件
+        var outer = document.getElementById("outer");
+        //获取图片列表
+        var list = document.getElementById("list");
+        //复制一份图片
+        /*无缝连续滚动的实现原理:在现有显示图片的基础上克隆一份，并且拼接在显示图片的后面;为了满足图片滚动起来有循环*/
+        list.innerHTML += list.innerHTML;
+        //设置初始偏移量
+        var left = 0;
+        //设置timer为全局变量
+        var timer;
+        run();
+        function run() {
+            //！！重点：设表先关，防止动画积累的问题：即用户多次点击后图标加载速度过快
+            clearTimeout(timer);
+            //设置定时器
+            timer = setInterval(function () {
+                //目的：图片左移，所以设置负值
+                left -= 10;
+                /*判断：当最后一张图片结束显示后，应该继续显示，而不是显示空白*/
+                if (left <= -210 * 6) {
+                    left = 0;
+                }
+                list.style.left = left + "px";
+            }, 100)
+        }
+
+        //鼠标进入，停止定时器
+        outer.onmouseenter = function () {
+            clearTimeout(timer);
+        }
+        //鼠标离开继续定时器
+        outer.onmouseleave = function () {
+            run();
+        }
+    </script>
+</body>
+
+</html>
