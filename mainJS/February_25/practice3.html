@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>跑马灯轮播图特效</title>
+    <title>跑马灯轮播图特效（通过改变图片容器的偏移量来实现）</title>
     <style>
         *{
             margin:0;
@@ -87,6 +87,7 @@
             lock = false;//关锁
             //给list加过度：因为CSS中会把过度去掉
             list.style.transition = "left .5s ease 0s";
+            idx++;
             if(idx>3){//说明图片到了最后一张了
                 //设置一个延时器，延时器的功能就是将ul瞬间拉回0的位置
                 setTimeout(() => {
@@ -96,7 +97,6 @@
                     idx = 0;   
                 },500);
             }
-            idx++;
             list.style.left = idx * -650 + "px";
             //定时器，打开锁（函数节流）
             setTimeout(function(){
@@ -119,7 +119,7 @@
                     //加过度
                     list.style.transition = "left .5s ease 0s";
                     //把idx改为真正的最后一张图片的编号
-                    idx = 4;
+                    idx = 3;
                     list.style.left = -idx * 650 + "px";
                 }, 0);
             }else{

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css.style/reset.css">
+    <title>跑马灯轮播图特效</title>
+    <!--注意：左右两个按钮的监听事件不一样-->
+    <style>
+        /*设置外部容器的样式,目的：作为轮播图滚动参照的容器*/
+        .outer {
+            width: 600px;
+            height: 360px;
+            border: 1px solid black;
+            /*目的：按钮设置绝对定位时的参照物（包含块）*/
+            position: relative;
+            /*居中*/
+            margin: 100px auto;
+            /*隐藏溢出内容*/
+            overflow: hidden;
+        }
+
+        /*设置图片列表容器*/
+        .list {
+            /*宽度绝对大，目的：让其子元素li进行浮动*/
+            width: 5000px;
+            height: 360px;
+            /*重点！！！目的：轮播图轮播时是提供改变图片容器的left值来轮播，而不是改变每一张图片的left值来轮播*/
+            position: relative;
+            /*初始偏移量*/
+            left: 0px;
+            /*图片过渡方式*/
+            transition: left .5s linear 0s;
+        }
+
+        /*设置每张图片的每个容器*/
+        .list li {
+            /*图片向左浮动*/
+            float: left;
+        }
+
+        /*设置每张图片大小*/
+        .list img {
+            width: 600px;
+            height: 360px;
+        }
+
+        /*设置左按钮*/
+        .leftbtn {
+            position: absolute;
+            left: 20px;
+            top: 155px;
+            width: 50px;
+            height: 50px;
+            background-color: deeppink;
+        }
+
+        /*设置右按钮*/
+        .rightbtn {
+            position: absolute;
+            right: 20px;
+            top: 155px;
+            width: 50px;
+            height: 50px;
+            background-color: deeppink;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!--设置外部容器-->
+    <div class="outer" id="outer">
+        <!--设置图片容器-->
+        <ul class="list" id="list">
+            <!--设置图片-->
+            <li><img src="../information/img/img1.jpg"></li>
+            <li><img src="../information/img/img2.jpg"></li>
+            <li><img src="../information/img/img3.jpg"></li>
+            <li><img src="../information/img/img4.jpg"></li>
+        </ul>
+        <!--设置按钮-->
+        <a href="javascript:;" id="leftbtn" class="leftbtn"></a>
+        <a href="javascript:;" id="rightbtn" class="rightbtn"></a>
+    </div>
+    <script>
+        //获取按钮
+        var leftbtn = document.getElementById("leftbtn");
+        var rightbtn = document.getElementById("rightbtn");
+        //获取图片列表list
+        var list = document.getElementById("list");
+        //右侧按钮绑定单击响应事件
+        //初始化当前显示第几张图片
+        var idx = 0;
+        /*版本一：问题1：最后一张图片过后不会循环到一第一张图片，直接显示空白页
+        解决1：可以通过判断来解决*/
+        // rightbtn.onclick = function(){
+        //     idx++;
+        //     //当点击按钮图片切换时，其实就是list的left值发生变化s
+        //     list.style.left = -idx*600 + "px";
+        // }
+
+        /*版本二：*/
+        // rightbtn.onclick = function(){
+        //     idx++;
+        //     //判断：当idx=4时就没有图片，可否直接切换到第一张图片
+        //     /*问题2：出现了滑倒最后一张图片时就直接回退到第一张图片；
+        //     解决：可以通过在idx=0时，把过度效果去掉，让图片直接闪回第一张图片*/
+        //     if(idx>3){
+        //         idx=0;
+        //     }
+        //     //当点击按钮图片切换时，其实就是list的left值发生变化
+        //     list.style.left = -idx*600 + "px";
+        // }
+
+        /*版本三*/
+        // rightbtn.onclick = function(){
+        //     //解决3：所以当该语句执行结束时，要把过度重新赋值
+        //     list.style.transition = " left .5s linear 0s";
+        //     idx++;
+        //     //判断：当idx=4时就没有图片，可否直接切换到第一张图片
+        //     /*问题2：出现了滑倒最后一张图片时就直接回退到第一张图片；
+        //     解决2：可以通过在idx=0时，把过度效果去掉，让图片直接闪回第一张图片；
+        //     问题4：但是我发现这种用户体验不好，前面是过度，这张就是闪回
+        //     问题3：但是其他图片的过度也消失了*/
+        //     if(idx>3){
+        //         idx=0;
+        //         list.style.transition = "none";
+        //     }
+        //     //当点击按钮图片切换时，其实就是list的left值发生变化
+        //     list.style.left = -idx*600 + "px";
+        // }
+
+        //         /*版本四：还是有回退效果*/
+        //         //克隆第一张图片
+        //         var cloneli = list.firstChild.cloneNode(true);
+        //         //将改cloneli挂载到li上
+        //         list.appendChild(cloneli);
+        //         rightbtn.onclick = function(){
+        //             //解决3：所以当该语句执行结束时，要把过度重新赋值
+        //             list.style.transition = " left .5s linear 0s";
+        //             idx++;
+        //             //判断：当idx=4时就没有图片，可否直接切换到第一张图片
+        //             /*问题2：出现了滑倒最后一张图片时就直接回退到第一张图片；
+        //             解决2：可以通过在idx=0时，把过度效果去掉，让图片直接闪回第一张图片；
+        //             问题4：但是我发现这种用户体验不好，前面是过度，这张就是闪回
+        //             问题3：但是其他图片的过度也消失了*/
+        //             //！！！重点：我自己是这里还有问题（其他步骤都没有问题了）
+        //             if(idx>3){
+        // //解决四：开头设置一个延时器来切换，（因为现在显示一张白片），所以现在必须加上第一张图片来以假换真来填补延时的切换效果
+        //                 setTimeout(function(){
+        //                     //去除过度属性，因为要瞬间移动
+        //                     list.style.transition = "none";
+        //                     list.style.left = 0;
+        //                     idx=0;
+        //                 },500)//间隔时间和过渡时间一样
+        //             }
+        //             //当点击按钮图片切换时，其实就是list的left值发生变化
+        //             list.style.left = -idx*600 + "px";
+        //         }
+
+        /*版本五：节流函数：防事件堆叠即避免用户点击过快，图片快速移动*/
+        //克隆第一张图片
+        var cloneli = list.firstElementChild.cloneNode(true);
+        //添加到list中
+        list.appendChild(cloneli);
+        //节流锁（避免用户点击过快，图片快速移动）
+        var lock = true;
+        rightbtn.onclick = function () {
+            //判断锁的状态
+            if (!lock) return;
+            lock = false;//关锁
+            //解决3：所以当该语句执行结束时，要把过度重新赋值
+            list.style.transition = " left .5s linear 0s";
+            idx++;
+            //判断：当idx=4时就没有图片，可否直接切换到第一张图片
+            /*问题2：出现了滑倒最后一张图片时就直接回退到第一张图片；
+            解决2：可以通过在idx=0时，把过度效果去掉，让图片直接闪回第一张图片；
+            问题4：但是我发现这种用户体验不好，前面是过度，这张就是闪回
+            问题3：但是其他图片的过度也消失了*/
+            //！！！重点：我自己是这里还有问题（其他步骤都没有问题了）
+            if (idx > 3) {
+                //解决四：开头设置一个延时器来切换，（因为现在显示一张白片），所以现在必须加上第一张图片来以假换真来填补延时的切换效果
+                setTimeout(function () {
+                    //去除过度属性，因为要瞬间移动
+                    list.style.transition = "none";
+                    list.style.left = 0;
+                    idx = 0;
+                }, 500)//间隔时间和过渡时间一样
+            }
+            //当点击按钮图片切换时，其实就是list的left值发生变化
+            list.style.left = -idx * 600 + "px";
+            //定时器，打开锁（函数节流）
+            setTimeout(function () {
+                lock = true;
+            }, 500);
+        }
+
+        /*重点！！：左侧按钮和右侧按钮写法还不一样（做按钮写法不怎么理解）*/
+        leftbtn.onclick = function () {
+            //判断锁的状态
+            if (!lock) return;
+            lock = false;//关锁
+            //判断是否为第0张
+            if (idx == 0) {
+                list.style.transition = "none";
+                //直接瞬间移动到最后一张假图片上
+                list.style.left = -4 * 600 + "px";
+                //其实不理解？？延时器：去除过度属性，因为要瞬间移动，不要过渡返回的效果;注意间隔时间为0
+                setTimeout(function () {
+                    //加过度属性
+                    list.style.transition = "left .5s linear 0s";
+                    //把idx改为真正的最后一张图片的编号
+                    idx = 3;
+                    list.style.left = -idx * 600 + "px";
+                }, 0);
+            }else{
+                //正常流程
+                idx--;
+                list.style.left = -idx * 600 + "px";
+            }
+            //函数节流：定时器，打开锁
+            setTimeout(function () {
+                    lock = true;
+            }, 500);
+        }
+
+
+
+    </script>
+</body>
+
+</html>

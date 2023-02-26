@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>呼吸轮播图(隐藏代码是与>跑马灯轮播图特效做的对比）</title>
+    <!--注意：！！左右两个按钮的监听事件相似-->
+    <link rel="stylesheet" href="../css.style/reset.css">
+    <style>
+        /*设置外部容器的样式,目的：作为轮播图滚动参照的容器*/
+        .outer {
+            width: 600px;
+            height: 360px;
+            border: 1px solid black;
+            /*目的：按钮设置绝对定位时的参照物（包含块）*/
+            position: relative;
+            /*居中*/
+            margin: 100px auto;
+            /*不用隐藏溢出内容，只需要设置透明度即可隐藏*/
+            /* overflow: hidden; */
+        }
+
+        /* 设置图片列表容器*/
+      /* .list {
+            /*宽度绝对大，目的：让其子元素li进行浮动*/
+            /* width: 5000px; */
+            /* height: 360px; */
+            /*重点！！！目的：轮播图轮播时是提供改变图片容器的left值来轮播，而不是改变每一张图片的left值来轮播*/
+            /* position: relative; */
+            /*初始偏移量*/
+            /* left: 0px; */
+            /*图片过渡方式*/
+            /* transition: left .5s linear 0s; */
+     /*   } */
+
+        /*设置每张图片的每个容器*/
+        .list li {
+            /* float: left; */
+            /*目的：图片浮动；定位*/
+            position: absolute;
+            top:0;
+            left:0;
+            /*图片消失术：除了第一张图片其他图片的透明度为0，透明度为0才会隐藏图片*/
+            opacity: 0;
+            /*设置图片过度效果*/
+            transition: opacity 1s ease 0s;
+        }
+        /**设置第一张图片透明度为1，因为要显示出来*/
+        .list li:first-child{
+            opacity: 1;
+        }
+        /*设置每张图片大小*/
+        .list img {
+            width: 600px;
+            height: 360px;
+        }
+
+        /*设置左按钮*/
+        .leftbtn {
+            position: absolute;
+            left: 20px;
+            top: 155px;
+            width: 50px;
+            height: 50px;
+            background-color: deeppink;
+        }
+
+        /*设置右按钮*/
+        .rightbtn {
+            position: absolute;
+            right: 20px;
+            top: 155px;
+            width: 50px;
+            height: 50px;
+            background-color: deeppink;
+        }
+    </style>
+</head>
+<body>
+     <!--设置外部容器-->
+     <div class="outer" id="outer">
+        <!--设置图片容器-->
+        <ul class="list" id="list">
+            <!--设置图片-->
+            <li><img src="../information/img/img1.jpg"></li>
+            <li><img src="../information/img/img2.jpg"></li>
+            <li><img src="../information/img/img3.jpg"></li>
+            <li><img src="../information/img/img4.jpg"></li>
+        </ul>
+        <!--设置按钮-->
+        <a href="javascript:;" id="leftbtn" class="leftbtn"></a>
+        <a href="javascript:;" id="rightbtn" class="rightbtn"></a>
+    </div>
+    <script>
+        //获取按钮和ul,ul整体进行运动
+        var leftbtn = document.getElementById("leftbtn");
+        var rightbtn = document.getElementById("rightbtn");
+        var list = document.getElementById("list");
+        //改变图片透明度来淡入淡出图片
+        var lis = document.getElementsByTagName("li");
+        //显示当前是第几张图片
+        var idx = 0;
+        //节流函数
+        var lock = true;//开锁
+        //右侧按钮事件监听
+        rightbtn.onclick = function(){
+            //判断节流
+            if(!lock) return;
+            lock = false;//关锁
+            //此时的idx就是老图，老图要淡出
+            lis[idx].style.opacity = 0;
+            idx++;
+            //如果是淡出到最后一张图片，则直接显示为第一张图片
+            if(idx>3){
+                idx=0;
+            }
+            //修改后的idx，此时idx就是新图片，新图要淡入
+            lis[idx].style.opacity = 1;
+            //动画结束后，开锁
+            setTimeout(function(){
+                lock= true
+            },1000)  
+        }
+
+        /*左侧按钮事件监听和左侧按钮类似*/
+        leftbtn.onclick = function(){
+            //判断节流
+            if(!lock) return;
+            lock = false;//关锁
+            //此时的idx就是老图，老图要淡出
+            lis[idx].style.opacity = 0;
+            idx--;
+            //如果是淡出到最后一张图片，则直接显示为第一张图片
+            if(idx<0){
+                idx=3;
+            }
+            //修改后的idx，此时idx就是新图片，新图要淡入
+            lis[idx].style.opacity = 1;
+            //动画结束后，开锁
+            setTimeout(function(){
+                lock= true
+            },1000)  
+        }
+
+    </script>
+</body>
+</html>
