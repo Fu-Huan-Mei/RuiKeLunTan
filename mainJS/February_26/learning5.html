@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM特效开发:返回顶部按钮</title>
+<!--理解记忆：2023-2-27 + 
+1.返回顶部按钮原理:改变document.documentElement.scrollTop属性,
+提供"定时器"逐步改变"此值",则将用"动画形式"返回顶部-->
+    <style>
+        body{
+            height:5000px;
+            background-image:linear-gradient(to bottom,rgb(195, 255, 0),rgb(0, 255, 42),green);
+        }
+        .backtop{
+            width:60px;
+            height:60px;
+            background-color: #fff;
+            position:fixed ;
+            bottom:100px;
+            right:100px;
+            /*箭头移入为小手形状*/
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="backtop">返回顶部</div>
+</body>
+</html>

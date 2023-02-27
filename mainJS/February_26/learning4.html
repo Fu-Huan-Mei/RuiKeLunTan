@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location对象</title>
+    <!--理解记忆：2023-2-27
+1.window.location:标识当前所在网址;可以提供该属性赋值命令浏览器进行"页面跳转"
+eg:window.location="http://www.imooc.com";
+window.location.href="http://www.imooc.com"
+2.重新加载当前页面:window.location.reload(true);"强制"重新加载
+3.GET请求查询参数:window.location.search属性即为当前浏览器的GET请求查询参数
+eg:https://www.imooc.com/?a=1&b=2-->
+</head>
+<body>
+    <button id="btn1">点我去看慕课</button>
+    <button id="btn2">刷新</button>
+    <script>
+        var btn1 = document.getElementById("btn1");
+        var btn2 = document.getElementById("btn2");
+        btn1.onclick = function(){
+            window.location = "http://www.imooc.com";
+        }
+        btn2.onclick = function(){
+            window.location = "http://www.imooc.com";
+        }
+        /*还有其他知识没学*/
+        console.log(window.location.search);//?a=1&b=2
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigator对象</title>
+<!--理解记忆：2023-2-26+
+1、window.navigator属性：检索navigator对象，它内部含有用户此次活动的浏览器的相关属性和标识
+2、属性                意义
+appName           浏览器官方名称
+appVersion          浏览器版本
+userAgent       浏览器用户代理（含有"内核"信息和"封装壳"信息）
+platform         用户操作系统-->
+
+</head>
+<body>
+    <h1>我是temp网页</h1>
+    <a href="./learning3.html">去看history方法页面</a>
+<script>
+    console.log("浏览器品牌",navigator.appName);// Netscape
+    console.log("浏览器版本",navigator.appVersion);//5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+    console.log("浏览器用户代理",navigator.userAgent );//Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+    console.log("用户操作系统",navigator.platform);//Win32
+</script>
+</body>
+</html>

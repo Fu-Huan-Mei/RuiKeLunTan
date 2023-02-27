@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History对象</title>
+    <!--理解记忆：2023-2-27
+    1、简介：提供操作浏览器"会话历史"的接口
+    2、常用操作：模拟浏览器回退按钮： history.go(-1);//history.back()、 history.back();//点击浏览器会话历史的接口-->
+</head>
+<body>
+    <h1>我是temp网页</h1>
+    <a href="./learning2.html">去看navigator对象</a>
+    <button id="btn">回退</button>
+<!--可以直接写-->
+    <a href="javascript:history.back();">回退</a>
+    <script>
+        var btn = document.getElementById("btn");
+        btn.onclick = function(){
+            // history.back();//点击浏览器会话历史的接口
+            history.go(-1);
+        }
+        
+    </script>
+</body>
+</html>
