@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BOM(浏览器交互对象模型）</title>
-    <!--理解记忆：2023-2-26+-->
+    <!--理解记忆：2023-2-26+  搜搜图看看到底是什么这些？？？-->
 <!-- BOM:JS与浏览器窗口交互的接口  eg:与浏览器改变尺寸、滚条滚动相关的特效 -->
 <!-- Window对象
-1、简介：当前JS脚本运行所处的窗口，该窗口包含DOM结构，window.document属性就是document对象
+1、简介：当前"JS"脚本"运行"所处的"窗口"，该窗口包含DOM结构，window.document属性就是document对象
 2、注意：每个标签页都拥有自己的window对象，即"同一个窗口"的标签页之间不会共享一个window对象-->
 <script>
-// 3、全局变量是window的属性:目的：多个JS文件之间共享全局作用域，即js文件没有作用域隔离功能
+// 3、全局变量是window的属性:目的：多个JS文件之间"共享""全局作用域"，即js文件没有作用域隔离功能
 var a=3;
 console.log(window.a==a);//true
 console.log(window.hasOwnProperty("a"));//true
@@ -23,22 +23,22 @@ window.setInterval(function(){
 },1000);
 //5、窗口尺寸相关属性
 //         属性                   意义
-//     innerHeight   浏览器窗口的"内容区"的高度，包含水平滚动条（如果有的话）
-//     innerWidth    浏览器窗口的"内容区"的宽度，包含垂直滚动条（如果有的话）
+//     innerHeight   浏览器窗口的"内容区"的高度，包含垂直滚动条（如果有的话）
+//     innerWidth    浏览器窗口的"内容区"的宽度，包含水平滚动条（如果有的话）
 //     ouetrHeight   浏览器窗口的外部高度
 //     ouetrWidth    浏览器窗口的外部宽度
-//获得不包含滚动条的窗口，要用 document.documentElement.clientWidth
+//获得不包含滚动条的窗口，要用 document.documentElement.clientWidth  eg:client客户端
 console.log("窗口内宽（包含滚动条）",window.innerWidth);//1524
 console.log("窗口外宽（包含滚动条）",window.outerWidth);//1539
 console.log("窗口内宽（不包含滚动条）",document.documentElement.clientWidth);//1524
-//6、resize事件："窗口大小"改变后，就会触发resize事件，可以使用
+//6、resize事件：窗口"大小"改变后，就会触发resize事件，可以使用
 // window.onresize或者window.addEventListener("resize")来绑定事件处理函数
 window.onresize = function(){
     var root = document.documentElement;
     // console.log("窗口改变尺寸了",root.clientWidth,root.clientHeight);
 }
 //7、已卷动高度：
-//（1）window.scrollY属性表示窗口在垂直方向已滚动的像素值
+//（1）window.scrollY属性表示"窗口"在"垂直"方向"已滚动"的"像素值"
 //（2）document.documentElement.scrollTop属性表示窗口卷动高度
 var scrollTop = window.scrollY || document.documentElement.scrollTop;
 console.log(window.scrollY);
