@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM特效开发-返回顶部按钮（思路要清晰）</title>
+    <style>
+        body{
+            height:5000px;
+            background-image:linear-gradient(to bottom,orange,greenyellow,yellow) ;
+        }
+        /*设置返回顶部样式*/
+        .backtotop{
+            width:60px;
+            height:60px;
+            background-color: rgba(255,255,255,.6);
+            position: fixed;
+            bottom:100px;
+            right:100px;
+            /*小手状*/
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="backtotop" id="backtotopBtn">返回顶部</div>
+    <script>
+        //获得按钮
+        var backtotopBtn = document.getElementById("backtotopBtn");
+        //全局变量
+        var timer;
+        //事件监听
+        backtotopBtn.onclick = function(){
+            //设表先关（防止用户过多点击使动画累积）
+            clearInterval(timer);
+            //设置定时器
+            timer = setInterval(function(){
+                //不断让scrolltop减少
+                document.documentElement.scrollTop -= 10;
+                //定时器停止
+                if(document.documentElement.scrollTop <= 0){
+                    clearInterval(timer);
+                }
+            },20);
+        }
+
+    </script>
+</body>
+</html>
