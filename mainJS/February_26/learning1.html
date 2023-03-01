@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BOM(浏览器交互对象模型）</title>
-    <!--理解记忆：2023-2-26+  搜搜图看看到底是什么这些？？？-->
-<!-- BOM:JS与浏览器窗口交互的接口  eg:与浏览器改变尺寸、滚条滚动相关的特效 -->
+    <!--理解记忆：2023-2-26+ 3-1  搜搜图看看到底是什么这些？？？-->
+<!-- BOM:JS与浏览器窗口交互的"接口"  eg:与浏览器改变尺寸、滚条滚动相关的特效 -->
 <!-- Window对象
 1、简介：当前"JS"脚本"运行"所处的"窗口"，该窗口包含DOM结构，window.document属性就是document对象
 2、注意：每个标签页都拥有自己的window对象，即"同一个窗口"的标签页之间不会共享一个window对象-->
@@ -21,12 +21,14 @@ console.log(window.hasOwnProperty("setInterval()"));//false
 window.setInterval(function(){
     // window.console.log("你好!")//你好！
 },1000);
-//5、窗口尺寸相关属性
+//5、浏览器窗口尺寸相关属性(重点！！)
+//包含滚动条的窗口
 //         属性                   意义
 //     innerHeight   浏览器窗口的"内容区"的高度，包含垂直滚动条（如果有的话）
 //     innerWidth    浏览器窗口的"内容区"的宽度，包含水平滚动条（如果有的话）
 //     ouetrHeight   浏览器窗口的外部高度
 //     ouetrWidth    浏览器窗口的外部宽度
+
 //获得不包含滚动条的窗口，要用 document.documentElement.clientWidth  eg:client客户端
 console.log("窗口内宽（包含滚动条）",window.innerWidth);//1524
 console.log("窗口外宽（包含滚动条）",window.outerWidth);//1539
@@ -37,13 +39,16 @@ window.onresize = function(){
     var root = document.documentElement;
     // console.log("窗口改变尺寸了",root.clientWidth,root.clientHeight);
 }
-//7、已卷动高度：
-//（1）window.scrollY属性表示"窗口"在"垂直"方向"已滚动"的"像素值"
-//（2）document.documentElement.scrollTop属性表示窗口卷动高度
+//7、已卷动高度：（重点！！）：区分好视窗和当前网页
+//小知识：document.documentElement 是一个会返回文档对象（document）的根元素的只读属性  eg：HTML 文档返回对象为HTML元素
+//（1）window.scrollY属性表示返回  "视窗"    滚动过的距离:"窗口"在"垂直"方向"已滚动"的"像素值"
+//（2）document.documentElement.scrollTop可以获取    "当前页面"   的滚动高度，也可以获取某个DOM元素的滚动距离；scrollTop还可以把滚动条移到指定位置
+//eg：例如：document.querySelector('.content').scrollTop，前提是.content元素存在，并且可以滚动   
+//eg:// 回到顶部     document.documentElement.scrollTop = 0;
 var scrollTop = window.scrollY || document.documentElement.scrollTop;
-console.log(window.scrollY);
-console.log(document.documentElement.scrollTop);
-//8、scroll事件：在窗口被卷动后，就会触发scroll事件，可以使用window.onscroll或者window.addEventListener("scroll")来绑定事件处理函数
+console.log("7",window.scrollY);
+console.log("7",document.documentElement.scrollTop);
+//8、scroll事件：在窗口被“卷动”后，就会触发scroll事件，可以使用window.onscroll或者window.addEventListener("scroll")来绑定事件处理函数
 //eg:落地页
 </script>
 <style>

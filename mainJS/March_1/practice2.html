@@ -4,126 +4,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>楼层导航小效果</title>
-    <!--1、offsetTop属性：标识此元素定位到祖先元素的垂直距离
-    2、定位祖先元素：在祖先中，离自己最近的且拥有定位属性的元素（与绝对定位很像）-->
+    <title>BOM特效开发（返回顶部按钮）（自己做的）</title>
     <style>
         *{
-            margin:0;
-            padding:0;
+            margin:0px;
+            padding:0px;
         }
-        .content-part{
-            width:600px;
-            margin:0px auto;
-            margin-bottom:30px;
-            background-color: #999;
-            font-size: 60px;
+        /*设置页面样式*/
+        body{
+            height:2000px;
+            background-image:linear-gradient(20deg,#ffb600,#fff600,#a5ff00);
         }
-        .floornav{
+        /*设置按钮样式*/
+        #btn{
+            font-size:20px;
+            /*开定位*/
             position: fixed;
-            top:50%;
-            margin-top:-100px;
-            right:20px;
-            height:200px;
-            background-color:antiquewhite;
-        }
-        .floornav ul{
-            list-style: none;
-        }
-        .floornav ul li{
-            width:120px;
-            height:40px;
-            line-height: 40px;
-            font-size: 26px;
-            text-align: center;
+            bottom:30px;
+            right:50px;
             cursor: pointer;
         }
-        .floornav ul .current{
-            background-color:orange;
-            color:#fff;
-        }
+        
     </style>
 </head>
 <body>
-    <div class="floornav">
-        <ul id="list">
-            <li data-n="科技" class="current">科技</li>
-            <li data-n="体育">体育</li>
-            <li data-n="新闻">新闻</li>
-            <li data-n="娱乐">娱乐</li>
-            <li data-n="视频">视频</li>
-        </ul>
-    </div>
-    <section class="content-part" style="height:674px;" data-n="科技">
-        科技栏目
-    </section>
-    <section class="content-part" style="height:567px;" data-n="体育">
-        体育栏目
-    </section>
-    <section class="content-part" style="height:739px;" data-n="新闻">
-        新闻栏目
-    </section>
-    <section class="content-part" style="height:274px;" data-n="娱乐">
-        娱乐栏目
-    </section>
-    <section class="content-part" style="height:874px;" data-n="视频">
-        视频栏目
-    </section>
+    <button id="btn" >返回顶部按钮</button>
     <script>
-        //事件委托给li添加事件监听
-        var list = document.getElementById("list");
-        var contentParts = document.querySelectorAll(".content-part");
-        var lis = document.querySelectorAll("#list li");
-        list.onclick = function(e){//??初次见面，十分陌生？？
-            if(e.target.tagName.toLowerCase()=="li"){
-                //重点！！getAttribute表示得到标签身上的某个属性值
-                var v = e.target.getAttribute('data-n');
-                //可以用属性选择器来寻找相同的data-n的content-part
-                var contentPart = document.querySelector('.content-part[data-n='+v+']');
-                //让页面的卷动自动成为子给盒子的offsetToop值
-                document.documentElement.scrollTop = contentPart.offsetTop;
-            }
-        }
-
-        //在页面加载好之后，将所有的conten-part盒子的offsetTop值推入数组
-        var offsetTopArr = [];
-        var contentParts = document.querySelectorAll(".content-part");
-        for(var i=0;i<contentParts.length;i++){
-            offsetTopArr.push(contentParts[i].offsetTop);
-        }
-        //为了最后一项方便比较，推入一个无穷大
-        offsetTopArr.push(Infinity);
-        console.log(offsetTopArr);
-        //当前所在楼层
-        var nowfloor = 1;
-        //监听窗口滚动事件
-        window.onscroll = function(){
-            var scrollTop = document.documentElement.scrollTop;
-            //遍历数组，看看当前的scrollTop值在哪两个楼层之间
-            for(var i=0;i<offsetTopArr.length;i++){
-                if(scrollTop >= offsetTopArr[i] && scrollTop < offsetTopArr[i+1]){
-                    break;
+        //获得按钮
+        var btn = document.getElementById("btn");
+//重点！！（自问自答）获取scrollTop值(不可以在中获取document.documentElement.scrollTop的值吗？？？不可以，因为该属性值实在btn的点击事件触发后所显示的值)
+       
+        //全局变量
+        var timer;
+        //事件监听
+        btn.onclick = function(){
+            //设表先关（防止用户过多点击使动画累积）
+            clearInterval(timer);
+            //开始定时器
+            timer = setInterval(function(){
+                document.documentElement.scrollTop -= 10;
+                //对scrollTop值进行判断
+                if(document.documentElement.scrollTop<=0){//说明滚动条已经滚到顶部了
+                    //关闭定时器（节流）
+                    clearInterval(timer);
                 }
-            }
-            //当退出循环时，i是几就表示当前楼层是几
-            // console.log(i);
-            //如果当前所在楼层不是i，就表示换楼了
-            if(nowfloor != i){
-                console.log(i);
-                //让全局变量改变为这个楼层
-                nowfloor = i;
-
-                //设置下标为i的项有cur
-                for(var j=0;j<lis.length;j++){
-                    if(j==i){
-                        lis[j].className = "current";
-                    }else{
-                        lis[j].className = " ";
-                    }
-                }
-            }
+            },20)
         }
-           
     </script>
 </body>
 </html>

@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOM特效开发-返回顶部按钮（思路要清晰）</title>
+    <title>BOM特效开发-返回顶部按钮（思路要清晰：老师讲的）</title>
+<!--！！重点理解记忆：返回顶部按钮原理:
+    （1）首先：改变document.documentElement.scrollTop属性
+    （2）其次：提供"定时器"逐步改变"此值"
+    （3）最后：用"动画形式"返回顶部-->
     <style>
         body{
             height:5000px;
@@ -15,6 +19,7 @@
             width:60px;
             height:60px;
             background-color: rgba(255,255,255,.6);
+            /*注意：是固定定位！！！*/
             position: fixed;
             bottom:100px;
             right:100px;
