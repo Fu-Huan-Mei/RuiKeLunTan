@@ -5,8 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>楼层导航小效果</title>
-    <!--1、offsetTop属性：标识此元素定位到祖先元素的垂直距离
-    2、定位祖先元素：在祖先中，离自己最近的且拥有定位属性的元素（与绝对定位很像）-->
+    <!--重点小知识 理解记忆：2023-3-1 +
+1、offsetTop属性：离当前元素最近的含有定位的祖先元素的"垂直"距离（定位祖先包含块）
+2、重要知识："offsetTop"和"document.documentElement.scrollTop"结合，运用"data-新增属性"进行比对
+3、 HTML 标签属性
+（1）通用属性：id：规定元素的唯一 id、class：规定元素的类名、style：规定元素的行内样式（inline style）、title：规定元素的额外信息（可在工具提示中显示）
+（2）自有属性：某一些标签特有：a标签的href属性、img标签的src属性、form表单的action属性，method属性等
+（3）自定义属性：自定义一些属性：最新规范中，推荐以data-开头
+4、自定义属性
+（1）目的：有些数据可以"保存到页面"中而不用保存到数据库中
+（2）设置：以data-开头、element.setAttribute("属性名"，“属性值)
+（3）获取：element.getAttribute(‘属性名’)
+（4）移除：element.removeAttribute(“属性名”)  移除指定的属性 
+（5）判断是否包含指定的属性：element.hasAttribute(“属性名”) 判断元素里面有没有对应的属性名-->
     <style>
         *{
             margin:0;
@@ -45,6 +56,7 @@
     </style>
 </head>
 <body>
+    <!--设置导航-->
     <div class="floornav">
         <ul id="list">
             <li data-n="科技" class="current">科技</li>
@@ -54,6 +66,7 @@
             <li data-n="视频">视频</li>
         </ul>
     </div>
+    <!--设置楼层-->
     <section class="content-part" style="height:674px;" data-n="科技">
         科技栏目
     </section>
@@ -70,34 +83,51 @@
         视频栏目
     </section>
     <script>
-        //事件委托给li添加事件监听
+// 2-1、实现点击"导航" 跳转到 "对应楼层"效果
+//（1）找导航：事件委托给li添加事件监听
+        //获取导航按钮
         var list = document.getElementById("list");
+        //获取所有楼层
         var contentParts = document.querySelectorAll(".content-part");
+        //通过属性选择器获取所有list下的li
         var lis = document.querySelectorAll("#list li");
+//（2）给导航批量添加事件监听：利用"事件委托"为导航添加点击事件，可通过e.target（点击对象）判断点击的是否为li   toLowerCase() 方法将字符串转换为小写
         list.onclick = function(e){//??初次见面，十分陌生？？
+//e.target 取得的是事件发生的对象，即事件源，它是 DOM 对象。 
+//tagName 是 DOM 对象的属性，用于获取 DOM 对象的标签名，取出来是大写的，你要取小写的用 nodeName。 或者用 toLowerCase () 把 tagName 转换成小写之后再进行比较。
             if(e.target.tagName.toLowerCase()=="li"){
+//（3）通过导航中的属性值去找楼层：获取点击导航的自定义属性值，通过该值找到对应的楼层
                 //重点！！getAttribute表示得到标签身上的某个属性值
                 var v = e.target.getAttribute('data-n');
                 //可以用属性选择器来寻找相同的data-n的content-part
                 var contentPart = document.querySelector('.content-part[data-n='+v+']');
-                //让页面的卷动自动成为子给盒子的offsetToop值
+//（4）判断网页中可以直接获取的数值和当前网页中楼层对象的offsetTop值的关系来实现让页面（网页）滚动到"指定位置"（楼层对象）
+//document.documentElement.scrollTop = 楼层的offsetTop（楼层距离页面顶部的距离）来实现让页面滚动到指定位置
                 document.documentElement.scrollTop = contentPart.offsetTop;
             }
         }
 
-        //在页面加载好之后，将所有的conten-part盒子的offsetTop值推入数组
+
+// （3）为对应楼层的导航添加高亮效果
+// 2-2、实现滚动到对应楼层后，对应导航高亮效果？？
+//（1）在页面加载好之后，将所有的"楼层的""offsetTop"推入数组中保存：便于在页面滚动时判断位于哪个楼层之间
+        //创建空数组：准备获取所有楼层的offsetTop值
         var offsetTopArr = [];
+        //获取所有的楼层
         var contentParts = document.querySelectorAll(".content-part");
+        //对所有的楼层进行遍历，获得所有楼层的offsetTop值
         for(var i=0;i<contentParts.length;i++){
             offsetTopArr.push(contentParts[i].offsetTop);
         }
-        //为了最后一项方便比较，推入一个无穷大
+        //为了最后一项方便比较，推入一个无穷大  ？？
         offsetTopArr.push(Infinity);
-        console.log(offsetTopArr);
-        //当前所在楼层
+        // console.log(offsetTopArr);
+       
+        // 设置全局变量：当前所在楼层
         var nowfloor = 1;
-        //监听窗口滚动事件
+//（2）监听窗口滚动事件：添加onscroll事件监听窗口的滚动，判断当前位于哪个楼层之间
         window.onscroll = function(){
+            //获取当前页面的垂直方向上的滚动数值
             var scrollTop = document.documentElement.scrollTop;
             //遍历数组，看看当前的scrollTop值在哪两个楼层之间
             for(var i=0;i<offsetTopArr.length;i++){

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京东右侧楼层导航</title>
+    <link rel="stylesheet" href="../css.style/reset.css">
+    <style>
+        
+        /*导航样式*/
+        .list{
+            width:58px;
+            height:200px;
+            background-color:chartreuse; 
+            position: fixed;
+            right:20px;
+            top:50%;
+            margin-top:-30px;
+        }
+        .list li{
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+            color:#333;
+            font-size: 14px;
+            color:#fff;
+            border:1px solid #fff;
+            cursor: pointer;
+        }
+        /*楼层样式*/
+        .city{
+            width:600px;
+            height:700px;
+            margin:0 auto;
+            background-color:pink;
+            font-size:50px;
+            margin-bottom:10px;
+        }
+    </style>
+</head>
+<body>
+    <!--创建导航-->
+    <div class="nav">
+        <ul class="list" id="list">
+            <li data-name='京东秒杀'>京东秒杀</li>
+            <li data-name='特色优选'>特色优选</li>
+            <li data-name='频道广场'>频道广场</li>
+            <li data-name='为你推荐'>为你推荐</li>
+        </ul>
+    </div>
+    <!-- 创建楼层(导航导到的具体内容上) -->
+    <div class="city" data-name='京东秒杀'>京东秒杀</div>
+    <div class="city" data-name='特色优选'>特色优选</div>
+    <div class="city" data-name='频道广场'>频道广场</div>
+    <div class="city" data-name='为你推荐'>为你推荐</div>
+    <!--实现点击"导航" 跳转到 "对应楼层"效果-->
+    <script>
+        /*总体效果：实现点击导航按钮可以跳转到对应的楼层*/
+        //（1）获取”导航“按钮
+        var list = document.getElementById("list");
+        //（2）事件委托：给按钮绑定单击响应事件：利用”事件委托“，把子元素li的事件监听委托给让list父元素
+        list.onclick = function(e){
+            //通过e.target属性获取list下的元素li并(??判断是否为li)
+            if(e.target.tagName.toLowerCase() == "li"){
+                //重点！！这个步骤我没有想到：getAttribute表示得到标签身上的某个属性值
+                 /*我的问题1：直接没有想到这个步骤；问题2：这个步骤忘写target*/
+                var n = e.target.getAttribute("data-name");
+                //（3）现在试图把导航按钮和楼层菜单联系起来：可以通过自定义属性data-name的属性值：
+                //通过元素选择器来获取li中的data-name
+                /*我的问题3：使用了querySelectorAll全部的属性选择器*/
+                var city = document.querySelector('.city[data-name='+n+']');
+                //（4）我的问题4：这个步骤在思考时卡住了一点点！！最后将直接从当前网页中获取的scrollTop值和city移动时获取的offsetTop值进行相等
+                document.documentElement.scrollTop = city.offsetTop;
+            }
+            
+        }
+    </script>
+</body>
+</html>
