@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>空间移动</title>
+    <!--当元素进行3D旋转后，即可继续添加translateX()、translateY()、translateZ()属性继续让元素在空间进行移动：
+        translateX()、translateY()、translateZ()：以当前旋转面形成坐标轴，X水平向右，Y垂直向下，Z当前的朝向
+        tranform:rotateX() translateX() translateY()-->
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box1 {
+            width: 202px;
+            height: 202px;
+            border: 1px solid black;
+            margin:100px auto;
+            perspective: 100px;
+            
+        }
+
+        p {
+            width: 200px;
+            height: 200px;
+            border: 1px solid yellow;
+            background-color: chartreuse;
+            transform: rotateY(30deg) translateX(100px);
+        }
+        </style>
+</head>
+<body>
+    <div class="box1">
+        <p></p>
+    </div>
+
+</body>
+</html>

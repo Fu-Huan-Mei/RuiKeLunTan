@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D旋转</title>
+    <!--
+    1、perspective:xx px;定义透视强度（"人眼到舞台的距离"），否则3D旋转将失效  舞台
+    2、设置：transform:rotateX(角度) /rotateY(角度) ;   演员
+   -->
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box1 {
+            width: 202px;
+            height: 202px;
+            border: 1px solid black;
+            margin:100px auto;
+            perspective: 100px;
+            
+        }
+
+        p {
+            width: 200px;
+            height: 200px;
+            border: 1px solid yellow;
+            background-color: chartreuse;
+            /* transform: rotateX(30deg);
+            transform: rotateY(30deg); */
+            transform: rotateZ(100deg);/*类似于rotate，就是平面旋转*/
+        }
+    
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+        <p></p>
+    </div>
+
+</body>
+
+</html>

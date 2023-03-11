@@ -4,14 +4,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>斜切变形</title>
+    <title>变形</title>
     <!--变形
     1、2D变形：旋转变形、缩放变形、斜切变形、位移变形
     2、3D变形：3D旋转、空间移动-->
-    <!--斜切变形
-    1、设置：transform:skew(x斜切角度，y斜切角度);-->
+    <!--
+    1、斜切变形：设置：transform:skew(x斜切角度，y斜切角度);-->
+    <!-- <style>
+        img{
+            width:100px;
+            height:100px;
+            transform: skew(10deg,20deg);
+        }
+    </style> -->
+    <!--
+    2、旋转变形：设置： transform:rotate(旋转角度)；角度：正，顺时针旋转；负，逆时针旋转；
+    注意： transform-origin属性：自定义变形原点-->
+    <!-- <style>
+          img{
+            border:10px solid yellow;
+            width:100px;
+            height:100px;
+           }
+           .p1{
+            /*以左上角为中心点旋转*/
+            transform-origin: 0 0;
+            transform: rotate(30deg);
+           }
+           .p2{
+            transform: rotate(60deg);
+           }
+           .p3{
+            transform: rotate(90deg);
+           }
+           .p4{
+            transform: rotate(180deg);
+           }
+    </style> -->
+    <!--
+    3、缩放变形：设置：transform:scale(缩放倍数)；倍数：当数值小于1时，表示缩小元素；大于1时表示放大元素-->
+    <!-- <style>
+         img{
+            border:10px solid yellow;
+            width:100px;
+            height:100px;
+            transform: scale(2);
+           }
+    </style> -->
 </head>
 <body>
-    
+    <p><img src="../information/img/img3.jpg" class="p1"></p>
+    <p><img src="../information/img/img3.jpg"  class="p2"></p>
+    <p><img src="../information/img/img3.jpg"  class="p3"></p>
+    <p><img src="../information/img/img3.jpg"  class="p4"></p>
 </body>
 </html>
