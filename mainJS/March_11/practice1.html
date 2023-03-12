@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>制作正方体（使用实物来帮助理解）</title>
-    <!--正方体的每个面都是从舞台经过不同得3D旋转、空间移动到自己位置的-->
+    <!--原理：正方体的每个面都是从舞台经过不同3D旋转、空间移动到自己位置的-->
     <style>
         *{
             margin:0;
@@ -32,27 +32,27 @@
             background-color: aqua;
         }
         .box p:nth-child(2){
-            /*顶面：后仰90deg，现在该面面朝的方向向上，所以也是往该面面向的方向往前走100px，作为正方体的顶面*/
+            /*顶面：沿着X轴顺时针旋转90deg，现在该面面朝的方向向上，所以也是往该面面向的方向往前（上）走100px，作为正方体的顶面*/
             transform: rotateX(90deg) translateZ(100px);
             background-color:blueviolet;
         }
         .box p:nth-child(3){
-            /*背面：*/
+            /*背面：沿着X轴顺时针旋转1800deg*/
             transform: rotateX(180deg) translateZ(100px);
             background-color:chartreuse;
         }
         .box p:nth-child(4){
-            /*底面*/
+            /*底面：沿着X轴逆时针旋转90度*/
             transform:  rotateX(-90deg) translateZ(100px);
             background-color:coral;
         }
         .box p:nth-child(5){
-            /*左侧面*/
+            /*左侧面：沿着Y轴顺时针旋转90度*/
             transform: rotateY(90deg) translateZ(100px);
             background-color:coral;
         }
         .box p:nth-child(6){
-            /*右侧面*/
+            /*右侧面：沿着Y轴逆时针旋转90度*/
             transform: rotateY(-90deg) translateZ(100px);
             background-color:deeppink;
         }

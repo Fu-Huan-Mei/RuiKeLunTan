@@ -5,9 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>空间移动</title>
-    <!--当元素进行3D旋转后，即可继续添加translateX()、translateY()、translateZ()属性继续让元素在空间进行移动：
-        translateX()、translateY()、translateZ()：以当前旋转面形成坐标轴，X水平向右，Y垂直向下，Z当前的朝向
-        tranform:rotateX() translateX() translateY()-->
+    <!--理解记忆：2023-3-12 + -->
+    <!--
+1、前提条件：当元素进行"3D旋转"后，即可"继续"添加translateX()、translateY()、translateZ()属性
+继续让元素"在空间"进行"移动"
+2、 设置：tranform:rotateX()/rotateY() translateX()/translateY()/translateZ()
+3、属性值：translateX()、translateY()、translateZ()：以当前旋转面形成坐标轴，X水平向右，Y垂直向下，Z当前的朝向
+   -->
     <style>
         *{
             margin:0;

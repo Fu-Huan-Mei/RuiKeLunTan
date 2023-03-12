@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D旋转</title>
+    <!--理解记忆：2023-3-12 + -->
     <!--
-    1、perspective:xx px;定义透视强度（"人眼到舞台的距离"），否则3D旋转将失效  舞台
-    2、设置：transform:rotateX(角度) /rotateY(角度) ;   演员
+    1、perspective:数值px;定义"透视"强度（"人眼到舞台的距离"），否则3D旋转将失效  -舞台
+    2、设置：transform:rotateX(角度) /rotateY(角度) ;   -演员
    -->
     <style>
         *{
@@ -31,7 +32,7 @@
             background-color: chartreuse;
             /* transform: rotateX(30deg);
             transform: rotateY(30deg); */
-            transform: rotateZ(100deg);/*类似于rotate，就是平面旋转*/
+            transform: rotateZ(100deg);/*类似于rotate，就是平面旋转(2D旋转/旋转变形)*/
         }
     
     </style>
