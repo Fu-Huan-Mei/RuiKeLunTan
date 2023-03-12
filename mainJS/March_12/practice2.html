@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            width:200px;
+            height:200px;
+            perspective:500px;
+            margin:50px auto;
+            position: relative;
+        }
+        .box img{
+            width:200px;
+            height:200px;
+            border:1px solid black;
+            border-radius: 50%;
+        }
+        /**/
+        .box img.dog{
+            position: absolute;
+            top:0;
+            left:0;
+            /*注意：左上角作为变形原点,默认变形原点是中心点！！*/
+            transform-origin: left top ;
+            transition:transform 1s ease 0s;
+        }
+        .box:hover img.dog{
+            transform: rotateY(-180deg);
+        }
+        .no2 img.dog{
+            transform-origin:right top;
+        }
+        .no2:hover img.dog{
+            transform: rotateY(180deg);
+        }
+        .no3 img.dog{
+            transform-origin: top center;
+        }
+        .no3:hover img.dog{
+            transform: rotateX(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="./picture/3.jfif" class="rabbit">
+        <img src="./picture/4.jfif" class="dog">
+    </div>
+    <div class="box no2">
+        <img src="./picture/3.jfif" class="rabbit">
+        <img src="./picture/4.jfif" class="dog">
+    </div>
+    <div class="box no3">
+        <img src="./picture/3.jfif" class="rabbit">
+        <img src="./picture/4.jfif" class="dog">
+    </div>
+</body>
+</html>

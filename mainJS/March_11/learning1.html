@@ -10,7 +10,7 @@
     1、2D变形：旋转变形、缩放变形、斜切变形、位移变形
     2、3D变形：3D旋转、空间移动-->
     <!--     skew  歪斜的；有偏差的
-    1、斜切变形：设置：transform:skew(x斜切角度，y斜切角度);-->
+    1、斜切变形：设置：transform:skew(x轴斜切"角度"，y轴斜切"角度");-->
     <style>
         img{
             width:100px;
@@ -20,9 +20,28 @@
     </style>
     <!--
     2、旋转变形：
-    设置： transform:rotate(旋转角度)；
-重点！！角度：正，"顺"时针旋转；负，"逆"时针旋转；
-    注意： transform-origin属性：自定义"变形"原点  eg:transform-origin: 0 0;-->
+（1）设置： transform:rotate(旋转角度)；
+（2）重点！！角度：正，"顺"时针旋转；负，"逆"时针旋转；
+（3）注意： transform-origin属性：
+作用：自定义"变形"坐标系的原点位置 
+默认原点：元素的中心 eg:transform-origin: center center(50% 50%);
+其他原点：
+transform-origin:left top;左上角
+transform-origin:top center(可略);上边框的中点
+transform-origin:right top;右上角
+transform-origin:left center(可略);左边框的中点
+默认原点
+transform-origin:right center(可略);右边框的中点
+transform-origin:left bottom;左下角
+transform-origin:bottom center(可略);下边框的中点
+transform-origin:right bottom;右下角
+属性值 ：关键字、百分比、数值（z只能是负值）         
+关键字                比例                
+left	              0%            
+center	              50%
+right	              100%
+top              	   0%
+bottom	              100%-->
     <style>
           img{
             border:10px solid yellow;
@@ -45,9 +64,9 @@
            }
     </style>
     <!--
-    3、缩放变形：
-    （1）设置：transform:scale(缩放倍数)；
-    （2）倍数：当数值"小于1"时，表示"缩小"元素；"大于1"时表示"放大"元素-->
+3、缩放变形：
+(1）设置：transform:scale(缩放倍数)；
+(2）倍数：当数值"小于1"时，表示"缩小"元素；"大于1"时表示"放大"元素-->
     <style>
          img{
             border:10px solid yellow;

@@ -11,13 +11,28 @@
             margin:0;
             padding:0;
         }
-        .box{
+        /*舞台*/
+        section{
             width:200px;
             height:200px;
-            border:1px solid black;
             margin:100px auto;
-            perspective: 300px;
+            perspective: 10000px;
+        }
+        /*.box开始状态*/
+        .box{
+/*重点：对于既是(p的)舞台，又是(section的)演员的元素，
+必须为其设置transform-style: preserve-3d;保留它内部的3D效果；
+该盒子box会带着里面的演员元素p一起旋转*/
+            transform-style: preserve-3d;
+            width:200px;
+            height:200px;
+            perspective: 10000px;
             position: relative;
+            transition: all 10s linear 0s ;
+        }
+        /*.box结束状态*/
+        section:hover .box{
+            transform: rotateX(360deg) rotateY(360deg);
         }
         .box p{
             position: absolute;
@@ -49,7 +64,7 @@
         .box p:nth-child(5){
             /*左侧面：沿着Y轴顺时针旋转90度*/
             transform: rotateY(90deg) translateZ(100px);
-            background-color:coral;
+            background-color:rgb(80, 133, 255);
         }
         .box p:nth-child(6){
             /*右侧面：沿着Y轴逆时针旋转90度*/
@@ -59,13 +74,16 @@
     </style>
 </head>
 <body>
-    <div class="box">
-        <p>1</p>
-        <p>2</p>
-        <p>3</p>
-        <p>4</p>
-        <p>5</p>
-        <p>6</p>
-    </div>
+    <section>
+        <div class="box">
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+            <p>4</p>
+            <p>5</p>
+            <p>6</p>
+        </div>
+    </section>
+   
 </body>
 </html>

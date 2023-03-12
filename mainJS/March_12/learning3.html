@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画</title>
+    <!--理解记忆：2023-3-12 + -->
+    <!--
+    1、定义：@keyframes 关键帧；在项目上线前，要补上@-webkit的私有前缀
+    2、语法: @keyframes 动画名 {
+                起始状态from{
+
+                }
+                结束状态to{  
+
+                }
+            }
+    3、调用：animation：动画名字 总时长 缓动效果 延迟时间 动画执行次数；eg:animation：r 1s linear 0s 3;
+    动画执行次数           值
+     永远执行          infinite
+  偶数次自动逆向执行    alternate
+  停止最后状态          forwards-->
+    <style>
+        .box1{
+            width:200px;
+            height:200px;
+            background-color: aqua;
+            animation: r 1s linear 0s infinite;
+        }
+        @keyframes r {
+            from{
+                transform: rotate(0);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+        .box2{
+            width:200px;
+            height:200px;
+            background-color: chartreuse;
+            animation:move 3s linear 0s infinite;
+        }
+        @keyframes move {
+            from{/*动画开始状态*/
+                transform: translateX(0);
+            }
+            to{/*动画结束状态*/
+                transform: translateX(1000px);
+            }
+        }
+        .box3{
+            width:200px;
+            height:200px;
+            background-color:cyan;
+            /*forwards保持动画的结束状态*/
+            animation:circle 3s linear 0s forwards;
+        }
+        @keyframes circle {
+            from{
+                border-radius: 0;
+            }
+            to{
+                border-radius: 50%;
+            }
+        }
+        /*多关键帧动画*/
+        .box4{
+            width:200px;
+            height:200px;
+            background-color:crimson;
+            /*forwards保持动画的结束状态*/
+            animation:color 3s linear 0s infinite;
+        }
+        @keyframes color {
+           0%{
+            transform: translateX(0);
+            background-color: crimson;
+           }
+           20%{
+            transform: translateX(50px);
+            background-color: aqua;
+           }
+           40%{
+            transform: translateX(100px);
+            background-color: blueviolet;
+           }
+           60%{
+            transform: translateX(150px);
+            background-color: darkorange;
+           }
+           80%{
+            transform: translateX(200px);
+            background-color: blanchedalmond;
+           }
+           100%{
+            transform: translateX(250px);
+            background-color:fuchsia;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+</body>
+</html>

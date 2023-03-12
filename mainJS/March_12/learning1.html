@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过度</title>
+    <!--理解记忆：2023-3-12 + -->
+        <!--
+        1、作用：为一个“元素”在“不同样式”之间变化自动添加"补间动画"
+        2、兼容性：IE10以上，移动端兼容良好
+        3、基本使用：transition:过度属性 动画(变化）时长 变化速度曲线 延迟时间； eg:transition:width 1s linear 0s;
+        4、过渡的四个小属性             意义                              属性值
+        transition-property      哪些属性要过度           （1）数值 eg:width、height、left、top、border-radius （2）背景/文字颜色 （3）变形(2D、3D）
+        transition-duration        动画时间
+transition-timing-function       动画变化曲线（缓动效果）  ease、linear、ease-in、ease-out、ease-in-out 
+        transition-delay          延迟时间
+        5、可以过渡的属性：
+        6、all关键字：所有属性都参与过度        eg:transition:all 1s linear 0s;
+    -->
+    <style>
+       
+        /*宽度变形*/
+        .box1{
+            width:200px;
+            height:200px;
+            background-color: chartreuse;
+            transition: width 5s linear 0s;
+            float: left;
+        }
+        .box1:hover{
+           width:800px;
+        }
+        /*左偏移量变形*/
+        .box2{
+            margin-bottom:30px;
+            float: left;
+        }
+        .box2 p{
+            width:200px;
+            height:200px;
+            background-color: aqua;
+            position: relative;
+            transition: left 5s linear 0s;
+            left:0;
+        }
+        .box2:hover p{
+            left:1000px;
+        }
+      
+        /*背景颜色变形*/
+        .box3{
+            width:200px;
+            height:200px;
+            background-color:coral;
+            transition:  background-color 2s linear 0s;
+            margin-bottom:30px;
+            float: left;
+        }
+        .box3:hover{
+            background-color: darkorchid;
+        }
+        /*圆角变形*/
+        .box4{
+            width:200px;
+            height:200px;
+            background-color:coral;
+            border-radius: 0;
+            transition:  border-radius 5s linear 0s;
+            margin-bottom:30px;
+            float: left;
+        }
+        .box4:hover{
+            border-radius: 50%;
+        }
+        /*2D变形*/
+        .box5{
+            width:200px;
+            height:200px;
+            background-color:deeppink;
+            transform: scale(0.5);
+            transition:  border-radius 5s linear 0s;
+            margin-bottom:30px;
+            float: left;
+        }
+        .box5:hover{
+            transform: scale(1);
+        }
+        /*3D变形*/
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box6{
+            border:1px solid black;
+            width:200px;
+        }
+        .box6 p{
+            width:200px;
+            height:200px;
+            background-color:deeppink;
+            transition:transform 5s linear 0s;
+        }
+        .box6:hover p{
+            transform: rotateX(100deg) ;
+        }
+        .box7{
+            width:200px;
+            height:200px;
+            border-radius: 0;
+            background-color: deepskyblue;
+            float: left;
+            transition:all 5s linear 0s;
+        }
+        .box7:hover{
+            width:300px;
+            height:150px;
+            border-radius: 50%;
+            background-color:yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2">
+        <p></p>
+    </div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+    <div class="box5"></div>
+    <div class="box6">
+        <p></p>
+    </div>
+    <div class="box7"></div>
+</body>
+</html>

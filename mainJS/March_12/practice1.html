@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过渡效果实战</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            width:1200px;
+            height:300px;
+            overflow: hidden;
+            margin:0 auto;
+        }
+        .box ul{
+            list-style: none;
+        }
+        .box ul li{
+            position: relative;
+            width:380px;
+            height:300px;
+            float: left;
+            margin-right:20px;
+        }
+        .box ul li img{
+            height:300px;
+            width:380px;
+        }
+        .box ul li .info{
+            width:380px;
+            height:30px;
+            line-height: 30px;
+            position: absolute;
+            bottom:0;
+            font-size: 16px;
+            color: #fff;
+            background-color: rgba(0,0,0,.1);
+            /*整体透明度为0，使.info消失*/
+            opacity: 0;
+            transition: opacity 1s linear 0s;
+        }
+        .box ul li:hover .info{
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>
+                <img src="../information/img/img1.jpg">
+                <div class="info">古建筑</div>
+            </li>
+            <li>
+                <img src="../information/img/img2.jpg">
+                <div class="info">美景</div>
+            </li>
+            <li>
+                <img src="../information/img/img3.jpg">
+                <div class="info">小可爱</div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
